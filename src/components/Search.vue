@@ -43,7 +43,7 @@
           </svg>
         </button>
        </div>
-       <p>|||</p>
+       <p class="p_p">|||</p>
       </div>
     </div>
     </div>
@@ -861,7 +861,55 @@ input {
   top: 20px;
   padding-top: 60px;
 }
-  
+    /* Adatta il contenitore della navbar */
+    .class_navbar_conteiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px; /* Aggiunge un po' di spazio attorno */
+  }
+
+  /* Stilizzazione della prima sezione con i tre elementi */
+  .class_navbar_conteiner > div:first-child {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; /* Distribuisce gli elementi uniformemente */
+    align-items: center; /* Allinea gli elementi verticalmente al centro */
+    margin-bottom: 10px; /* Spazio tra la prima e la seconda sezione */
+  }
+
+  /* Posiziona l'icona della ricerca di FontAwesome */
+  .class_navbar_conteiner div:first-child:before {
+    content: "\f002"; /* Icona di ricerca di FontAwesome */
+    font-family: FontAwesome;
+    font-size: 24px; /* Aumenta o riduci per adattare le dimensioni dell'icona */
+  }
+
+  /* Stile per l'immagine del logo */
+  .class_navbar_conteiner > div:first-child > img {
+    width: 50px; /* Modifica per adattare le dimensioni del logo */
+    height: auto; 
+  }
+
+  /* Stile per le tre stangatte (|||) */
+  .class_navbar_conteiner > div:first-child > p {
+    font-size: 24px; /* Modifica per adattare le dimensioni delle stangatte */
+    margin: 0; /* Rimuove margini aggiuntivi */
+  }
+  .p_p{
+display:none;
+}
+  /* Stilizzazione della seconda sezione con il paginator */
+  .class_navbar_conteiner > div:nth-child(2) {
+    display: flex;
+    align-items: center; /* Allinea gli elementi verticalmente al centro */
+  }
+
+  /* Stile per il testo del paginator (page 1 of 2) */
+  .class_navbar_conteiner div:nth-child(2) p {
+    margin: 0 10px; /* Aggiunge spazio ai lati del testo */
+    font-size: 16px; /* Modifica per adattare le dimensioni del testo */
+  }
 }
 </style>
     
