@@ -13,7 +13,7 @@ import SearchDeep from './components/Search.vue';
 export default {
   name: 'App',
   components: {
- 
+
     SearchDeep
   }
 }
