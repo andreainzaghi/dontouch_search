@@ -6,7 +6,7 @@
       <div class="class_navbar_conteiner">
         <!-- logo// -->
         <img src="../assets/img/logo.png" alt="">
-       <div style="display:flex;align-items: center;">
+       <div style="display:flex;align-items: center;" class="btn_btn_btn">
         <button @click="goBack" :disabled="isBackDisabled">
           <svg
             width="30px"
@@ -24,7 +24,7 @@
             />
           </svg>
         </button>
-        <p>Page {{ currentPage }} of {{ Math.ceil(totalImages / 6) }}</p>
+        <p style="padding:0 1rem;">Page {{ currentPage }} of {{ Math.ceil(totalImages / 6) }}</p>
         <button @click="goForward" :disabled="isForwardDisabled">
           <svg
             width="30px"
@@ -174,7 +174,7 @@
         <img :src="getImagePath(item.img)" class="card-image" />
   <h2 class="card-title">{{ item.title }}</h2>
   <b>{{ item.category }}</b>
-  <div>
+  <div style="padding:2px 12px;background-color:rgb(209, 241, 255);border-radius: 98px;width:80px;border:1px solid grey;">
     {{ item.status }}
   </div>
   <p class="card-description">{{ item.description }}</p>
@@ -437,7 +437,10 @@ export default {
 .input_btn_search {
   display: flex;
 }
-
+.p_p{
+  transform:rotate(90deg);
+  transform:scale(1.1);
+}
 .input_btn_search button:nth-child(2) {
   border-left: 1px solid grey;
   border-right: 1px solid grey;
@@ -740,7 +743,7 @@ input {
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
+  background: rgb(255, 255, 255);
   z-index: 99999;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -751,13 +754,13 @@ input {
 
 /* Stile base per la dropdown */
 .filters-dropdown {
-  background-color: #f3f3f3; /* Colore di sfondo simile a quello di GitHub */
+  background-color: rgba(209, 241, 255, 0.809) ;/* Colore di sfondo simile a quello di GitHub */
   border: 1px solid #e1e4e8; /* Colore del bordo */
   border-radius: 5px; /* Angoli arrotondati */
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
   padding: 15px;
   width: 100%;
-  max-width: 96.5%; /* Puoi cambiare secondo le tue esigenze */
+  max-width: 97.5%; /* Puoi cambiare secondo le tue esigenze */
   margin: 10px 0;
   position: absolute;
   top: 20px;
@@ -766,8 +769,8 @@ input {
 
 /* Stile per i bottoni */
 .filters-dropdown button {
-  background-color: #ffffff;
-  border: 1px solid #e1e4e8;
+  background-color: #f0f0f0;
+  border: 1px solid #979797;
   border-radius: 20px;
   color: #24292e; /* Colore testo */
   cursor: pointer;
@@ -777,7 +780,7 @@ input {
 }
 
 .filters-dropdown button:hover {
-  background-color: #d5eaff;
+  background-color: rgb(209, 241, 255);
 }
 
 /* Stile per bottoni attivi */
@@ -792,7 +795,10 @@ input {
 .filters-dropdown .filter-species {
   margin-bottom: 15px;
 }
-
+.btn_btn_btn button{
+  border-radius:80px;
+  border:1px solid lightgrey;
+}
 /* Stile per il selettore di ordinamento e il selettore della data */
 .filters-dropdown .sort-container,
 .filters-dropdown .date-range {
@@ -849,7 +855,6 @@ input {
   }
 
   .filters-dropdown {
-  background-color: #f3f3f3; /* Colore di sfondo simile a quello di GitHub */
   border: 1px solid #e1e4e8; /* Colore del bordo */
   border-radius: 5px; /* Angoli arrotondati */
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
