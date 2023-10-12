@@ -20,6 +20,7 @@
             />
           </svg>
         </button>
+        <p>Page {{ currentPage }} of {{ Math.ceil(totalImages / 6) }}</p>
         <button @click="goForward" :disabled="isForwardDisabled">
           <svg
             width="30px"
@@ -351,7 +352,9 @@ export default {
         );
       });
     });
-
+    const totalImages = computed(() => {
+  return data.value.length;
+});
     const totalPages = computed(() => {
       return Math.ceil(sortedAndFilteredData.value.length / itemsPerPage.value);
     });
@@ -378,6 +381,7 @@ export default {
       endDate,
       minDate,
       maxDate,
+      totalImages,
       getImagePath,
       selectedStatus,
       uniqueStatuses,
