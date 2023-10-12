@@ -566,6 +566,7 @@ input {
   left: 0;
   right: 0;
   background: white;
+  z-index: 99999;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 1rem;
