@@ -38,6 +38,7 @@
   </div>
     <transition-group name="shuffle" tag="div" class="cards-container">
       <div v-for="item in sortedAndFilteredData" :key="item.id" class="card">
+        <img :src="getImagePath(item.img)" class="card-image" />
         <h2>{{ item.title }}</h2>
         <p>{{ item.description }}</p>
         <!-- Display statistics related to sorting -->
@@ -115,7 +116,9 @@ export default {
     const uniqueCategories = computed(() => {
       return [...new Set(data.value.map((item) => item.category))];
     });
-
+    const getImagePath = (imageName: any) => {
+      return require(`@/assets/img/${imageName}`);
+    }
     const sortedAndFilteredData = computed(() => {
       let result = data.value.filter((item) => {
         const matchesCategory =
@@ -156,6 +159,8 @@ export default {
       endDate,
       minDate,
       maxDate,
+      getImagePath
+
     };
   },
 };

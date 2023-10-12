@@ -1,6 +1,7 @@
 [
     {
       "id": 1,
+      "img":"rick.png",
       "title": "Rick Sanches",
       "description": "An extensive overview of the new features in Vue 3.",
       "category": "male",
@@ -11,6 +12,7 @@
     },
     {
       "id": 2,
+      "img":"morty.png",
       "title": "Responsive Design Essentials",
       "description": "Learn the foundational techniques for crafting responsive web layouts.",
       "category": "Design",
@@ -21,6 +23,7 @@
     },
     {
       "id": 3,
+      "img":"summer.png",
       "title": "Rick Sanches",
       "description": "An extensive overview of the new features in Vue 3.",
       "category": "Web Development",
@@ -31,6 +34,7 @@
     },
     {
       "id": 4,
+      "img":"rick.png",
       "title": "Responsive Design Essentials",
       "description": "Learn the foundational techniques for crafting responsive web layouts.",
       "category": "Design",
@@ -41,6 +45,7 @@
     },
     {
       "id": 5,
+      "img":"morty.png",
       "title": "Rick Sanches",
       "description": "An extensive overview of the new features in Vue 3.",
       "category": "Web Development",
@@ -51,6 +56,7 @@
     },
     {
       "id": 6,
+      "img":"summer.png",
       "title": "Responsive Design Essentials",
       "description": "Learn the foundational techniques for crafting responsive web layouts.",
       "category": "Design",
