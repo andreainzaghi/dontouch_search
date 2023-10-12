@@ -89,7 +89,7 @@
 
     
     <script lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 // import jsonData from "../assets/json/data.json";
 
 /* eslint-disable no-unused-vars */
@@ -126,29 +126,61 @@ export default {
     const searchQuery = ref("");
     const selectedCategory = ref("");
     const sortOption = ref<SortKeys>("views");
-  
     const selectedStatus = ref("");
     const selectedSpecies = ref("");
-
     const data = ref<DataItem[]>([]);
+    const currentPage = ref(1);
+    const itemsPerPage = ref(6);
+    const startDate = ref("2022-01-01");
+    const endDate = ref("2023-12-31");
 
     // Fetch data from backend when component is mounted
-    onMounted(async () => {
-      try {
-        const response = await fetch("http://127.0.0.1:5000/data");
+    const totalPages = ref(0);
+
+const fetchData = async (page: number) => {
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/data?page=${page}&items_per_page=${itemsPerPage.value}&search_query=${searchQuery.value}&selected_category=${selectedCategory.value}&sort_option=${sortOption.value}`);
+        
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+            throw new Error("Network response was not ok");
         }
+        
         const jsonData = await response.json();
-        data.value = jsonData; // Update data ref with fetched data
-      } catch (error) {
+        data.value = jsonData.data;
+        totalPages.value = jsonData.total_pages;
+    } catch (error) {
         console.error("There was a problem with the fetch operation:", error);
-      }
-    });
+    }
+};
 
-    const startDate = ref("2022-01-01"); // puoi impostare una data di default
-    const endDate = ref("2023-12-31"); // puoi impostare una data di default
 
+fetchData(currentPage.value);
+
+const goBack = () => {
+    if (currentPage.value > 1) {
+        currentPage.value -= 1;
+        fetchData(currentPage.value);
+    }
+};
+
+const goForward = () => {
+    if (currentPage.value < totalPages.value) {
+        currentPage.value += 1;
+        fetchData(currentPage.value);
+    }
+};
+
+
+// Use this for displaying your data
+const paginatedData = computed(() => {
+    return data.value;
+});
+
+
+// Since your server-side script is sending only 6 items per page, we just need to check if we received 6 items to decide if there's a "next page"
+const isForwardDisabled = computed(() => paginatedData.value.length < itemsPerPage.value);
+
+  
     const minDate = computed(() => {
       return data.value.reduce((acc, item) => {
         return item.datePublished < acc ? item.datePublished : acc;
@@ -220,33 +252,11 @@ export default {
         );
       });
     });
-    const currentPage = ref(1);
-    const itemsPerPage = ref(6);
 
-    const totalPages = computed(() => {
-      return Math.ceil(sortedAndFilteredData.value.length / itemsPerPage.value);
-    });
+  
 
-    const paginatedData = computed(() => {
-      const start = (currentPage.value - 1) * itemsPerPage.value;
-      const end = start + itemsPerPage.value;
-      return sortedAndFilteredData.value.slice(start, end);
-    });
-
-    const goBack = () => {
-      if (currentPage.value > 1) {
-        currentPage.value -= 1;
-      }
-    };
-
-    const goForward = () => {
-      if (currentPage.value < totalPages.value) {
-        currentPage.value += 1;
-      }
-    };
 
     const isBackDisabled = computed(() => currentPage.value === 1);
-    const isForwardDisabled = computed(() => currentPage.value === totalPages.value);
 
     return {
       searchQuery,
@@ -270,7 +280,9 @@ export default {
       goBack,
       goForward,
       isBackDisabled,
-      isForwardDisabled
+      isForwardDisabled,
+      
+      
 
     };
   },
