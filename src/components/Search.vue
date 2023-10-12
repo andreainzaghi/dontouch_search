@@ -2,8 +2,42 @@
   <div class="flex_cards">
     <!-- Navigation Buttons -->
     <div class="navigation-buttons">
-      <button @click="goBack" :disabled="isBackDisabled">Back</button>
-      <button @click="goForward" :disabled="isForwardDisabled">Forward</button>
+      <div class="class_navbar_conteiner">
+        <button @click="goBack" :disabled="isBackDisabled">
+          <svg
+            width="30px"
+            height="30px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 12H18M6 12L11 7M6 12L11 17"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <button @click="goForward" :disabled="isForwardDisabled">
+          <svg
+            width="30px"
+            height="30px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 12H18M18 12L13 7M18 12L13 17"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
 
     <div class="search-container">
@@ -19,7 +53,6 @@
             FILTERS
           </button>
           <button class="search-btn" @click="startSpeechRecognition">
-          
             <svg
               width="30px"
               height="30px"
@@ -44,7 +77,12 @@
         <div class="slide_show_on_off_filters">
           <!-- Category Filter -->
           <div class="filter-category">
-            <button @click="selectedCategory = ''" style="background-color:rgb(255, 124, 31)">All Categories</button>
+            <button
+              @click="selectedCategory = ''"
+              style="background-color: rgb(255, 124, 31)"
+            >
+              All Categories
+            </button>
             <button
               v-for="category in uniqueCategories"
               :key="category"
@@ -57,7 +95,12 @@
 
           <!-- Status Filter -->
           <div class="filter-status">
-            <button @click="selectedStatus = ''" style="background-color:rgb(255, 249, 62)">All Statuses</button>
+            <button
+              @click="selectedStatus = ''"
+              style="background-color: rgb(255, 249, 62)"
+            >
+              All Statuses
+            </button>
             <button
               v-for="status in uniqueStatuses"
               :key="status"
@@ -70,7 +113,12 @@
 
           <!-- Species Filter -->
           <div class="filter-species">
-            <button @click="selectedSpecies = ''" style="background-color:rgb(127, 234, 33)">All Species</button>
+            <button
+              @click="selectedSpecies = ''"
+              style="background-color: rgb(127, 234, 33)"
+            >
+              All Species
+            </button>
             <button
               v-for="species in uniqueSpecies"
               :key="species"
@@ -380,9 +428,8 @@ export default {
   transition: background-color 0.3s;
 }
 .input_btn_search button:nth-child(1) {
- 
   height: 100%;
- background-color: #fff;
+  background-color: #fff;
   color: rgb(0, 0, 0);
   cursor: pointer;
   transition: background-color 0.3s;
@@ -469,14 +516,15 @@ body {
 .flex_cards {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 70%;
   margin: 0 auto;
 }
 
 .stats span {
   margin-right: 8px;
 }
-
+.class_navbar_conteiner button {
+}
 /* Additional buttons, if any */
 .card-btn {
   display: inline-block;
@@ -594,24 +642,23 @@ input {
   position: relative;
   margin-bottom: 1rem;
   background-color: #ffffff;
-
 }
 
 .search-box {
   display: flex;
   gap: 0.5rem;
-  border-radius: 70px;
-  height: 60px;
+  border-radius: 50px;
+  height: 40px;
   z-index: 999995;
-position:relative;
-background: #fff;
+  position: relative;
+  background: #fff;
   border: 1px solid grey;
 }
 
 .search-input {
   flex-grow: 1;
   padding: 10px 15px;
-  border-radius: 70px;
+  border-radius: 50px;
   border: none;
 
   height: 100%;
@@ -650,7 +697,7 @@ background: #fff;
 
 /* Stile base per la dropdown */
 .filters-dropdown {
-  background-color: #ffffffde; /* Colore di sfondo simile a quello di GitHub */
+  background-color: #f3f3f3; /* Colore di sfondo simile a quello di GitHub */
   border: 1px solid #e1e4e8; /* Colore del bordo */
   border-radius: 5px; /* Angoli arrotondati */
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
@@ -659,13 +706,13 @@ background: #fff;
   max-width: 96.5%; /* Puoi cambiare secondo le tue esigenze */
   margin: 10px 0;
   position: absolute;
-  top:20px;
-  padding-top:60px;
+  top: 20px;
+  padding-top: 60px;
 }
 
 /* Stile per i bottoni */
 .filters-dropdown button {
-  background-color: #d1e8ff;
+  background-color: #ffffff;
   border: 1px solid #e1e4e8;
   border-radius: 20px;
   color: #24292e; /* Colore testo */
@@ -676,7 +723,7 @@ background: #fff;
 }
 
 .filters-dropdown button:hover {
-  background-color: #7db5ff;
+  background-color: #d5eaff;
 }
 
 /* Stile per bottoni attivi */
@@ -701,7 +748,7 @@ background: #fff;
   margin-bottom: 15px;
 }
 
-.filters-dropdown select, 
+.filters-dropdown select,
 .filters-dropdown input[type="date"] {
   background-color: #fafbfc;
   border: 1px solid #e1e4e8;
@@ -716,6 +763,5 @@ background: #fff;
 .filters-dropdown input[type="date"]:hover {
   border-color: #0366d6;
 }
-
 </style>
     
