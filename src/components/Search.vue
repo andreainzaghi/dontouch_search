@@ -181,10 +181,10 @@
 
   <!-- Display statistics related to sorting -->
   <div class="stats">
-    <span class="date-published"><i class="fas fa-calendar-alt"></i> {{ item.datePublished }}</span>
-    <span class="views"><i class="fas fa-eye"></i> {{ item.views }} views</span>
-    <span class="likes"><i class="fas fa-thumbs-up"></i> {{ item.likes }} likes</span>
-    <span class="comments"><i class="fas fa-comment"></i> {{ item.comments }} comments</span>
+    <p class="date-published"><i class="fas fa-calendar-alt"></i> {{ item.datePublished }}</p>
+    <p class="views"><i class="fas fa-eye"></i> {{ item.views }} views</p>
+    <p class="likes"><i class="fas fa-thumbs-up"></i> {{ item.likes }} likes</p>
+    <p class="comments"><i class="fas fa-comment"></i> {{ item.comments }} comments</p>
   </div>
 </div>
 
@@ -487,8 +487,8 @@ body {
 .cards-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  width:70%;
+  justify-content: space-between;
+  width:80%;
   margin: 0 auto;
 }
 
@@ -542,7 +542,7 @@ body {
   margin: 0 auto;
 }
 .flex_cards_1{
-  width:70%;
+  width:80%;
   display:flex;
  margin: 0 auto;
 }
@@ -682,7 +682,7 @@ input {
   position: relative;
   margin-bottom: 1rem;
   background-color: #ffffff;
-  width:70%;
+  width:80%;
   border-radius:50px;
   margin:0 auto;
 }
@@ -690,7 +690,7 @@ input {
   display:flex !important;
   align-items:center;
   justify-content:space-between;
-  width:100%;
+  width:99%;
 }
 .search-box {
   display: flex;
