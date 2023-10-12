@@ -1,8 +1,12 @@
 <template>
   <div class="flex_cards">
+    <div class="flex_cards_1">
     <!-- Navigation Buttons -->
     <div class="navigation-buttons">
       <div class="class_navbar_conteiner">
+        <!-- logo// -->
+        <img src="../assets/img/logo.png" alt="">
+       <div style="display:flex;align-items: center;">
         <button @click="goBack" :disabled="isBackDisabled">
           <svg
             width="30px"
@@ -38,8 +42,12 @@
             />
           </svg>
         </button>
+       </div>
+       <p>|||</p>
       </div>
     </div>
+    </div>
+    <div class="flex_card_i">
 
     <div class="search-container">
       <!-- Search Box -->
@@ -160,7 +168,8 @@
       </div>
     </div>
     <!-- Cards Display -->
-    <transition-group name="shuffle" tag="div" class="cards-container">
+<div class="card_cotainer_top">
+  <transition-group name="shuffle" tag="div" class="cards-container">
       <div v-for="item in paginatedData" :key="item.id" class="card">
         <img :src="getImagePath(item.img)" class="card-image" />
         <h2 class="card-title">{{ item.title }}</h2>
@@ -175,6 +184,9 @@
         </div>
       </div>
     </transition-group>
+</div>
+    
+  </div>
   </div>
 </template>
 
@@ -470,8 +482,9 @@ body {
 .cards-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 3%;
+  justify-content: space-evenly;
+  width:70%;
+  margin: 0 auto;
 }
 
 /* Individual card styles */
@@ -520,15 +533,27 @@ body {
 .flex_cards {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
 }
-
+.flex_cards_1{
+  width:70%;
+  display:flex;
+ margin: 0 auto;
+}
 .stats span {
   margin-right: 8px;
 }
 .class_navbar_conteiner button {
-  display: flex !important
+  display: flex !important;
+
+}
+
+.class_navbar_conteiner{
+  align-items: center;
+  justify-content: space-between;
+  height:90px;
+
 }
 /* Additional buttons, if any */
 .card-btn {
@@ -569,7 +594,12 @@ input {
   width: 100%;
   box-sizing: border-box;
 }
-
+.card_cotainer_top{
+  width:100%;
+  background: rgb(236,230,228);
+  padding-top:50px;
+  margin-top:-20px;
+background: linear-gradient(0deg, rgba(236,230,228,0.10127801120448177) 0%, rgba(0,215,255,0.3561799719887955) 250%);}
 input:focus {
 }
 
@@ -647,8 +677,16 @@ input {
   position: relative;
   margin-bottom: 1rem;
   background-color: #ffffff;
+  width:70%;
+  border-radius:50px;
+  margin:0 auto;
 }
-
+.class_navbar_conteiner{
+  display:flex !important;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+}
 .search-box {
   display: flex;
   gap: 0.5rem;
@@ -672,7 +710,12 @@ input {
 /* .search-input:focus {
   border-color: #0366d6;
 } */
+.flex_card_i{
+  width:100%;
 
+  margin: 0 auto;
+  height:100%;
+}
 .filters-btn {
   padding: 10px 15px;
   border-radius: 25px;
@@ -771,7 +814,11 @@ input {
 #app > div > div > div.navigation-buttons > div{
   display: flex !important;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
+#app > div > div > div.flex_cards_1 > div{
+  width:100%;
+}
+
 </style>
     
