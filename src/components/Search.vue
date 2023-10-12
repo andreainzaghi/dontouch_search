@@ -1,71 +1,76 @@
 <template>
   <div class="flex_cards">
+    
+    <!-- Back and Forward Buttons -->
+    <div>
+      <button @click="goBack" :disabled="isBackDisabled">Back</button>
+      <button @click="goForward" :disabled="isForwardDisabled">Forward</button>
+    </div>
     <div style="display: flex">
       <!-- Text Search -->
       <input v-model="searchQuery" placeholder="Search..." />
       <button @click="startSpeechRecognition">Voice Search</button>
     </div>
-    <!-- Category Filter -->
-  <div class="slide_show_on_off_filters">
-    <div>
-  <button @click="selectedCategory = ''">All Categories</button>
-  <button
-    v-for="category in uniqueCategories"
-    :key="category"
-    @click="selectedCategory = category"
-    :class="{ 'active': selectedCategory === category }"
-  >
-    {{ category }}
-  </button>
- 
 
-</div>
-<!-- Status Filter -->
-<div>
-  <button @click="selectedStatus = ''">All Statuses</button>
-  <button
-    v-for="status in uniqueStatuses"
-    :key="status"
-    @click="selectedStatus = status"
-    :class="{ 'active': selectedStatus === status }"
-  >
-    {{ status }}
-  </button>
-</div>
+    <div class="slide_show_on_off_filters">
+      <!-- Category Filter -->
+      <div>
+        <button @click="selectedCategory = ''">All Categories</button>
+        <button
+          v-for="category in uniqueCategories"
+          :key="category"
+          @click="selectedCategory = category"
+          :class="{ 'active': selectedCategory === category }"
+        >
+          {{ category }}
+        </button>
+      </div>
 
-<!-- Species Filter -->
-<div>
-  <button @click="selectedSpecies = ''">All Species</button>
-  <button
-    v-for="species in uniqueSpecies"
-    :key="species"
-    @click="selectedSpecies = species"
-    :class="{ 'active': selectedSpecies === species }"
-  >
-    {{ species }}
-  </button>
-</div>
+      <!-- Status Filter -->
+      <div>
+        <button @click="selectedStatus = ''">All Statuses</button>
+        <button
+          v-for="status in uniqueStatuses"
+          :key="status"
+          @click="selectedStatus = status"
+          :class="{ 'active': selectedStatus === status }"
+        >
+          {{ status }}
+        </button>
+      </div>
 
+      <!-- Species Filter -->
+      <div>
+        <button @click="selectedSpecies = ''">All Species</button>
+        <button
+          v-for="species in uniqueSpecies"
+          :key="species"
+          @click="selectedSpecies = species"
+          :class="{ 'active': selectedSpecies === species }"
+        >
+          {{ species }}
+        </button>
+      </div>
 
+      <!-- Advanced Sorting -->
+      <select v-model="sortOption">
+        <option value="">Sort by...</option>
+        <option value="datePublished">Publication Date</option>
+        <option value="views">Views</option>
+        <option value="likes">Likes</option>
+        <option value="comments">Comments</option>
+      </select>
 
-    <!-- Advanced Sorting -->
-    <select v-model="sortOption">
-      <option value="">Sort by...</option>
-      <option value="datePublished">Publication Date</option>
-      <option value="views">Views</option>
-      <option value="likes">Likes</option>
-      <option value="comments">Comments</option>
-    </select>
-
-    <!-- Selettore di intervallo di date con due input date -->
-    <div class="date-range">
-      <input type="date" v-model="startDate" :min="minDate" :max="endDate" />
-      <input type="date" v-model="endDate" :min="startDate" :max="maxDate" />
+      <!-- Date Range Selector with two date inputs -->
+      <div class="date-range">
+        <input type="date" v-model="startDate" :min="minDate" :max="endDate" />
+        <input type="date" v-model="endDate" :min="startDate" :max="maxDate" />
+      </div>
     </div>
 
-  </div>
+    <!-- Cards Display -->
     <transition-group name="shuffle" tag="div" class="cards-container">
-      <div v-for="item in sortedAndFilteredData" :key="item.id" class="card">
+      <div v-for="item in paginatedData" :key="item.id" class="card">
         <img :src="getImagePath(item.img)" class="card-image" />
         <h2>{{ item.title }}</h2>
         <p>{{ item.description }}</p>
@@ -78,8 +83,10 @@
         </div>
       </div>
     </transition-group>
+
   </div>
 </template>
+
     
     <script lang="ts">
 import { ref, computed, onMounted } from "vue";
@@ -213,6 +220,33 @@ export default {
         );
       });
     });
+    const currentPage = ref(1);
+    const itemsPerPage = ref(6);
+
+    const totalPages = computed(() => {
+      return Math.ceil(sortedAndFilteredData.value.length / itemsPerPage.value);
+    });
+
+    const paginatedData = computed(() => {
+      const start = (currentPage.value - 1) * itemsPerPage.value;
+      const end = start + itemsPerPage.value;
+      return sortedAndFilteredData.value.slice(start, end);
+    });
+
+    const goBack = () => {
+      if (currentPage.value > 1) {
+        currentPage.value -= 1;
+      }
+    };
+
+    const goForward = () => {
+      if (currentPage.value < totalPages.value) {
+        currentPage.value += 1;
+      }
+    };
+
+    const isBackDisabled = computed(() => currentPage.value === 1);
+    const isForwardDisabled = computed(() => currentPage.value === totalPages.value);
 
     return {
       searchQuery,
@@ -229,7 +263,14 @@ export default {
       selectedStatus,
       uniqueStatuses,
       selectedSpecies,
-      uniqueSpecies
+      uniqueSpecies,
+      currentPage,
+      totalPages,
+      paginatedData,
+      goBack,
+      goForward,
+      isBackDisabled,
+      isForwardDisabled
 
     };
   },
