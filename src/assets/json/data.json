@@ -13,7 +13,7 @@
     {
       "id": 2,
       "img":"morty.png",
-      "title": "Responsive Design Essentials",
+      "title": "Morty Smith",
       "description": "Learn the foundational techniques for crafting responsive web layouts.",
       "category": "Design",
       "datePublished": "2023-02-20",
@@ -24,7 +24,7 @@
     {
       "id": 3,
       "img":"summer.png",
-      "title": "Rick Sanches",
+      "title": "Summer Smith",
       "description": "An extensive overview of the new features in Vue 3.",
       "category": "Web Development",
       "datePublished": "2023-01-15",
@@ -35,7 +35,7 @@
     {
       "id": 4,
       "img":"rick.png",
-      "title": "Responsive Design Essentials",
+      "title": "Rick Sanches",
       "description": "Learn the foundational techniques for crafting responsive web layouts.",
       "category": "Design",
       "datePublished": "2023-02-20",
@@ -46,7 +46,7 @@
     {
       "id": 5,
       "img":"morty.png",
-      "title": "Rick Sanches",
+      "title": "Morty Smith",
       "description": "An extensive overview of the new features in Vue 3.",
       "category": "Web Development",
       "datePublished": "2023-01-15",
@@ -57,7 +57,7 @@
     {
       "id": 6,
       "img":"summer.png",
-      "title": "Responsive Design Essentials",
+      "title": "Summer Smith",
       "description": "Learn the foundational techniques for crafting responsive web layouts.",
       "category": "Design",
       "datePublished": "2023-02-20",
