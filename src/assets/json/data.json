@@ -37,5 +37,83 @@
     "comments": 30,
     "status": "UNKNOWN",
     "species": "HUMAN"
+  },
+  {
+    "id": 1,
+    "img":"rick.png",
+    "title": "Rick Sanches",
+    "description": "An extensive overview of the new features in Vue 3.",
+    "category": "male",
+    "datePublished": "2023-01-15",
+    "views": 500,
+    "likes": 1200,
+    "comments": 79,
+    "status": "ALIVE",
+    "species": "HUMAN"
+  },
+  {
+    "id": 2,
+    "img":"morty.png",
+    "title": "Morty Smith",
+    "description": "Learn the foundational techniques for crafting responsive web layouts.",
+    "category": "male",
+    "datePublished": "2023-02-20",
+    "views": 600,
+    "likes": 980,
+    "comments": 215,
+    "status": "ALIVE",
+    "species": "HUMAN"
+  },
+  {
+    "id": 3,
+    "img":"summer.png",
+    "title": "Summer Smith",
+    "description": "An extensive overview of the new features in Vue 3.",
+    "category": "female",
+    "datePublished": "2023-01-15",
+    "views": 5000,
+    "likes": 100,
+    "comments": 30,
+    "status": "UNKNOWN",
+    "species": "HUMAN"
+  },
+  {
+    "id": 1,
+    "img":"rick.png",
+    "title": "Rick Sanches",
+    "description": "An extensive overview of the new features in Vue 3.",
+    "category": "male",
+    "datePublished": "2023-01-15",
+    "views": 500,
+    "likes": 1200,
+    "comments": 79,
+    "status": "ALIVE",
+    "species": "HUMAN"
+  },
+  {
+    "id": 2,
+    "img":"morty.png",
+    "title": "Morty Smith",
+    "description": "Learn the foundational techniques for crafting responsive web layouts.",
+    "category": "male",
+    "datePublished": "2023-02-20",
+    "views": 600,
+    "likes": 980,
+    "comments": 215,
+    "status": "ALIVE",
+    "species": "HUMAN"
+  },
+  {
+    "id": 3,
+    "img":"summer.png",
+    "title": "Summer Smith",
+    "description": "An extensive overview of the new features in Vue 3.",
+    "category": "female",
+    "datePublished": "2023-01-15",
+    "views": 5000,
+    "likes": 100,
+    "comments": 30,
+    "status": "UNKNOWN",
+    "species": "HUMAN"
   }
 ]

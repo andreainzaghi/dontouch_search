@@ -82,8 +82,8 @@
 </template>
     
     <script lang="ts">
-import { ref, computed } from "vue";
-import jsonData from "../assets/json/data.json";
+import { ref, computed, onMounted } from "vue";
+// import jsonData from "../assets/json/data.json";
 
 /* eslint-disable no-unused-vars */
 declare global {
@@ -93,6 +93,19 @@ declare global {
   }
 }
 /* eslint-enable no-unused-vars */
+interface DataItem {
+  category: string;
+  comments: number;
+  datePublished: string;
+  description: string;
+  id: number;
+  img: string;
+  likes: number;
+  species: string;
+  status: string;
+  title: string;
+  views: number;
+}
 
 type SortKeys = "views" | "likes" | "comments" | "datePublished";
 
@@ -110,7 +123,21 @@ export default {
     const selectedStatus = ref("");
     const selectedSpecies = ref("");
 
-    const data = ref(jsonData);
+    const data = ref<DataItem[]>([]);
+
+    // Fetch data from backend when component is mounted
+    onMounted(async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:5000/data");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const jsonData = await response.json();
+        data.value = jsonData; // Update data ref with fetched data
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+      }
+    });
 
     const startDate = ref("2022-01-01"); // puoi impostare una data di default
     const endDate = ref("2023-12-31"); // puoi impostare una data di default
