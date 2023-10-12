@@ -44,7 +44,7 @@
         <div class="slide_show_on_off_filters">
           <!-- Category Filter -->
           <div class="filter-category">
-            <button @click="selectedCategory = ''">All Categories</button>
+            <button @click="selectedCategory = ''" style="background-color:rgb(255, 124, 31)">All Categories</button>
             <button
               v-for="category in uniqueCategories"
               :key="category"
@@ -57,7 +57,7 @@
 
           <!-- Status Filter -->
           <div class="filter-status">
-            <button @click="selectedStatus = ''">All Statuses</button>
+            <button @click="selectedStatus = ''" style="background-color:rgb(255, 249, 62)">All Statuses</button>
             <button
               v-for="status in uniqueStatuses"
               :key="status"
@@ -70,7 +70,7 @@
 
           <!-- Species Filter -->
           <div class="filter-species">
-            <button @click="selectedSpecies = ''">All Species</button>
+            <button @click="selectedSpecies = ''" style="background-color:rgb(127, 234, 33)">All Species</button>
             <button
               v-for="species in uniqueSpecies"
               :key="species"
@@ -604,6 +604,7 @@ input {
   height: 60px;
   z-index: 999995;
 position:relative;
+background: #fff;
   border: 1px solid grey;
 }
 
@@ -649,7 +650,7 @@ position:relative;
 
 /* Stile base per la dropdown */
 .filters-dropdown {
-  background-color: #b6e7ff9e; /* Colore di sfondo simile a quello di GitHub */
+  background-color: #ffffffde; /* Colore di sfondo simile a quello di GitHub */
   border: 1px solid #e1e4e8; /* Colore del bordo */
   border-radius: 5px; /* Angoli arrotondati */
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
@@ -664,9 +665,9 @@ position:relative;
 
 /* Stile per i bottoni */
 .filters-dropdown button {
-  background-color: #fafbfc;
+  background-color: #d1e8ff;
   border: 1px solid #e1e4e8;
-  border-radius: 5px;
+  border-radius: 20px;
   color: #24292e; /* Colore testo */
   cursor: pointer;
   margin: 5px;
@@ -675,7 +676,7 @@ position:relative;
 }
 
 .filters-dropdown button:hover {
-  background-color: #e1e4e8;
+  background-color: #7db5ff;
 }
 
 /* Stile per bottoni attivi */
