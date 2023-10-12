@@ -57,7 +57,16 @@
           v-model="searchQuery"
           placeholder="Search..."
         />
+        <div> <select name="" id="">
+            <option value="">All</option>
+            <option value="">Category</option>
+            <option value="">Status</option>
+            <option value="">Species</option>
+            <option value="">Title</option>
+          </select></div>
         <div class="input_btn_search">
+          <!-- //scrivi una select option con 5 elementi -->
+        
           <button @click="showFilterDropdown = !showFilterDropdown">
             FILTERS
           </button>
@@ -172,9 +181,10 @@
   <transition-group name="shuffle" tag="div" class="cards-container">
       <div v-for="item in paginatedData" :key="item.id" class="card">
         <img :src="getImagePath(item.img)" class="card-image" />
-  <h2 class="card-title">{{ item.title }}</h2>
-  <b>{{ item.category }}</b>
-  <div style="padding:2px 12px;background-color:rgb(209, 241, 255);border-radius: 98px;width:80px;border:1px solid grey;">
+  <div style="padding:0.4rem  0  0  0.6rem;">
+    <h2 class="card-title">{{ item.title }}</h2>
+  <b style="font-size:12px;">{{ item.category }}</b>
+  <div style="padding:0px 12px;background-color:rgb(209, 241, 255);border-radius: 98px;width:80px;border:1px solid rgb(158, 158, 158);">
     {{ item.status }}
   </div>
   <p class="card-description">{{ item.description }}</p>
@@ -185,6 +195,7 @@
     <p class="views"><i class="fas fa-eye"></i> {{ item.views }} views</p>
     <p class="likes"><i class="fas fa-thumbs-up"></i> {{ item.likes }} likes</p>
     <p class="comments"><i class="fas fa-comment"></i> {{ item.comments }} comments</p>
+  </div>
   </div>
 </div>
 
@@ -421,7 +432,7 @@ export default {
 .card {
   margin-bottom: 15px;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 1px;
   border-radius: 5px;
   background-color: #f9f9f9;
   transition: background-color 0.3s ease;
@@ -535,7 +546,7 @@ body {
 
 .card-description {
   margin-top: 10px;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: #586069;
 }
 
@@ -557,7 +568,17 @@ body {
   display: flex !important;
 
 }
+#app > div > div.flex_cards > div.flex_card_i > div.card_cotainer_top > div > div:nth-child(3) > div{
+  position: relative;
+}
 
+.stats p{
+  padding:0px;
+  font-weight:bold;
+  color:rgb(66, 66, 66);
+  margin:1px 0;
+  font-size:0.75rem;
+}
 .class_navbar_conteiner{
   align-items: center;
   justify-content: space-between;
@@ -754,8 +775,8 @@ input {
 
 /* Stile base per la dropdown */
 .filters-dropdown {
-  background-color: rgba(209, 241, 255, 0.809) ;/* Colore di sfondo simile a quello di GitHub */
-  border: 1px solid #e1e4e8; /* Colore del bordo */
+  background-color: rgba(0, 0, 0, 0.809) ;/* Colore di sfondo simile a quello di GitHub */
+  border: 2px solid #ffffff; /* Colore del bordo */
   border-radius: 5px; /* Angoli arrotondati */
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
   padding: 15px;
@@ -827,7 +848,9 @@ input {
   width: 100%; /* Per fare in modo che si adattino affianco */
   transition: border-color 0.2s;
 }
-
+#app > div > div.flex_cards > div.flex_card_i > div.search-container > div.filters-dropdown > div > div.date-range > input[type=date]:nth-child(2){
+  margin:0 0 0 10px !important;
+}
 .filters-dropdown select:hover,
 .filters-dropdown input[type="date"]:hover {
   border-color: #0366d6;
@@ -839,6 +862,12 @@ input {
 }
 #app > div > div > div.flex_cards_1 > div{
   width:100%;
+}
+
+.stats{
+border-top:1px solid lightgrey;
+padding-top:0.3rem;
+ 
 }
 @media screen and (max-width: 768px) {
   .cards-container[data-v-7cb41050] {
