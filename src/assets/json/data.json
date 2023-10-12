@@ -1,13 +1,13 @@
 [
     {
       "id": 1,
-      "title": "A Deep Dive into Vue 3",
+      "title": "Rick Sanches",
       "description": "An extensive overview of the new features in Vue 3.",
-      "category": "Web Development",
+      "category": "male",
       "datePublished": "2023-01-15",
-      "views": 5000,
+      "views": 500,
       "likes": 1200,
-      "comments": 320
+      "comments": 79
     },
     {
       "id": 2,
@@ -15,19 +15,19 @@
       "description": "Learn the foundational techniques for crafting responsive web layouts.",
       "category": "Design",
       "datePublished": "2023-02-20",
-      "views": 6500,
+      "views": 600,
       "likes": 980,
       "comments": 215
     },
     {
       "id": 3,
-      "title": "A Deep Dive into Vue 3",
+      "title": "Rick Sanches",
       "description": "An extensive overview of the new features in Vue 3.",
       "category": "Web Development",
       "datePublished": "2023-01-15",
       "views": 5000,
-      "likes": 1200,
-      "comments": 320
+      "likes": 100,
+      "comments": 30
     },
     {
       "id": 4,
@@ -35,17 +35,17 @@
       "description": "Learn the foundational techniques for crafting responsive web layouts.",
       "category": "Design",
       "datePublished": "2023-02-20",
-      "views": 6500,
+      "views": 9500,
       "likes": 980,
       "comments": 215
     },
     {
       "id": 5,
-      "title": "A Deep Dive into Vue 3",
+      "title": "Rick Sanches",
       "description": "An extensive overview of the new features in Vue 3.",
       "category": "Web Development",
       "datePublished": "2023-01-15",
-      "views": 5000,
+      "views": 5990,
       "likes": 1200,
       "comments": 320
     },
@@ -55,8 +55,8 @@
       "description": "Learn the foundational techniques for crafting responsive web layouts.",
       "category": "Design",
       "datePublished": "2023-02-20",
-      "views": 6500,
+      "views": 65900,
       "likes": 980,
-      "comments": 215
+      "comments": 1215
     }
 ]
