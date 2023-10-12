@@ -1,33 +1,40 @@
 <template>
   <div class="flex_cards">
     
-    <!-- Back and Forward Buttons -->
-    <div>
+    <!-- Navigation Buttons -->
+    <div class="navigation-buttons">
       <button @click="goBack" :disabled="isBackDisabled">Back</button>
       <button @click="goForward" :disabled="isForwardDisabled">Forward</button>
     </div>
-    <div style="display: flex">
-      <!-- Text Search -->
-      <input v-model="searchQuery" placeholder="Search..." />
-      <button @click="startSpeechRecognition">Voice Search</button>
-    </div>
+    <button @click="showFilterDropdown = !showFilterDropdown">
+      Toggle Filters
+    </button>
 
-    <div class="slide_show_on_off_filters">
-      <!-- Category Filter -->
-      <div>
-        <button @click="selectedCategory = ''">All Categories</button>
-        <button
-          v-for="category in uniqueCategories"
-          :key="category"
-          @click="selectedCategory = category"
-          :class="{ 'active': selectedCategory === category }"
-        >
-          {{ category }}
-        </button>
+    <div class="search-container">
+      <!-- Search Box -->
+      <div class="search-box">
+        <input class="search-input" v-model="searchQuery" placeholder="Search..." />
+        <button class="search-btn" @click="startSpeechRecognition">Voice Search</button>
       </div>
+      
+      <!-- Filters Dropdown -->
+      <div class="filters-dropdown" v-show="showFilterDropdown">
+        <div class="slide_show_on_off_filters">
+          <!-- Category Filter -->
+          <div class="filter-category">
+            <button @click="selectedCategory = ''">All Categories</button>
+            <button
+              v-for="category in uniqueCategories"
+              :key="category"
+              @click="selectedCategory = category"
+              :class="{ 'active': selectedCategory === category }"
+            >
+              {{ category }}
+            </button>
+          </div>
 
       <!-- Status Filter -->
-      <div>
+      <div class="filter-status">
         <button @click="selectedStatus = ''">All Statuses</button>
         <button
           v-for="status in uniqueStatuses"
@@ -40,7 +47,7 @@
       </div>
 
       <!-- Species Filter -->
-      <div>
+      <div class="filter-species">
         <button @click="selectedSpecies = ''">All Species</button>
         <button
           v-for="species in uniqueSpecies"
@@ -53,37 +60,40 @@
       </div>
 
       <!-- Advanced Sorting -->
-      <select v-model="sortOption">
-        <option value="">Sort by...</option>
-        <option value="datePublished">Publication Date</option>
-        <option value="views">Views</option>
-        <option value="likes">Likes</option>
-        <option value="comments">Comments</option>
-      </select>
+      <div class="sort-container">
+        <select v-model="sortOption">
+          <option value="">Sort by...</option>
+          <option value="datePublished">Publication Date</option>
+          <option value="views">Views</option>
+          <option value="likes">Likes</option>
+          <option value="comments">Comments</option>
+        </select>
+      </div>
 
-      <!-- Date Range Selector with two date inputs -->
+      <!-- Date Range Selector -->
       <div class="date-range">
         <input type="date" v-model="startDate" :min="minDate" :max="endDate" />
         <input type="date" v-model="endDate" :min="startDate" :max="maxDate" />
       </div>
     </div>
-
+  </div>
+</div>
     <!-- Cards Display -->
     <transition-group name="shuffle" tag="div" class="cards-container">
       <div v-for="item in paginatedData" :key="item.id" class="card">
         <img :src="getImagePath(item.img)" class="card-image" />
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.description }}</p>
+        <h2 class="card-title">{{ item.title }}</h2>
+        <p class="card-description">{{ item.description }}</p>
+        
         <!-- Display statistics related to sorting -->
         <div class="stats">
-          <span>{{ item.datePublished }}</span>
-          <span>{{ item.views }} views</span>
-          <span>{{ item.likes }} likes</span>
-          <span>{{ item.comments }} comments</span>
+          <span class="date-published">{{ item.datePublished }}</span>
+          <span class="views">{{ item.views }} views</span>
+          <span class="likes">{{ item.likes }} likes</span>
+          <span class="comments">{{ item.comments }} comments</span>
         </div>
       </div>
     </transition-group>
-
   </div>
 </template>
 
@@ -133,6 +143,8 @@ export default {
     const itemsPerPage = ref(6);
     const startDate = ref("2022-01-01");
     const endDate = ref("2023-12-31");
+    const showFilterDropdown = ref(false);
+
 
     // Fetch data from backend when component is mounted
     const fetchData = async () => {
@@ -168,7 +180,7 @@ export default {
       }
     };
 
-
+ 
   
     const minDate = computed(() => {
       return data.value.reduce((acc, item) => {
@@ -280,7 +292,7 @@ export default {
       goForward,
       isBackDisabled,
       isForwardDisabled,
-      
+      showFilterDropdown
 
     };
   },
@@ -495,6 +507,70 @@ select:hover {
 .card-enter, .card-leave-to /* .card-leave-active in <2.1.8 */ {
   transform: translateY(-100%);
   opacity: 0;
+}
+.show-dropdown {
+  max-height: 500px; /* You can adjust this value based on content */
+}
+/* Base and Reset styles */
+body {
+  background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif;
+}
+
+button,
+select,
+input {
+  outline: none;
+  border: none;
+}
+
+/* Search Container */
+.search-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.search-box {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 2px solid #d1d5da;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #0366d6;
+}
+
+.filters-btn {
+  padding: 10px 15px;
+  border-radius: 25px;
+  background-color: #0366d6;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filters-btn:hover {
+  background-color: #005cc5;
+}
+
+.filters-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
 }
 </style>
     
