@@ -17,7 +17,35 @@
   >
     {{ category }}
   </button>
+ 
+
 </div>
+<!-- Status Filter -->
+<div>
+  <button @click="selectedStatus = ''">All Statuses</button>
+  <button
+    v-for="status in uniqueStatuses"
+    :key="status"
+    @click="selectedStatus = status"
+    :class="{ 'active': selectedStatus === status }"
+  >
+    {{ status }}
+  </button>
+</div>
+
+<!-- Species Filter -->
+<div>
+  <button @click="selectedSpecies = ''">All Species</button>
+  <button
+    v-for="species in uniqueSpecies"
+    :key="species"
+    @click="selectedSpecies = species"
+    :class="{ 'active': selectedSpecies === species }"
+  >
+    {{ species }}
+  </button>
+</div>
+
 
 
     <!-- Advanced Sorting -->
@@ -78,6 +106,9 @@ export default {
     const searchQuery = ref("");
     const selectedCategory = ref("");
     const sortOption = ref<SortKeys>("views");
+  
+    const selectedStatus = ref("");
+    const selectedSpecies = ref("");
 
     const data = ref(jsonData);
 
@@ -90,10 +121,19 @@ export default {
       }, "9999-12-31");
     });
 
+
     const maxDate = computed(() => {
       return data.value.reduce((acc, item) => {
         return item.datePublished > acc ? item.datePublished : acc;
       }, "0000-01-01");
+    });
+
+    const uniqueStatuses = computed(() => {
+      return [...new Set(data.value.map((item) => item.status))];
+    });
+
+    const uniqueSpecies = computed(() => {
+      return [...new Set(data.value.map((item) => item.species))];
     });
     const startSpeechRecognition = () => {
       let SpeechRecognition =
@@ -121,14 +161,13 @@ export default {
     }
     const sortedAndFilteredData = computed(() => {
       let result = data.value.filter((item) => {
-        const matchesCategory =
-          !selectedCategory.value || item.category === selectedCategory.value;
-        const matchesQuery =
-          item.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-          item.description
-            .toLowerCase()
-            .includes(searchQuery.value.toLowerCase());
-        return matchesCategory && matchesQuery;
+        const matchesCategory = !selectedCategory.value || item.category === selectedCategory.value;
+        const matchesStatus = !selectedStatus.value || item.status === selectedStatus.value;
+        const matchesSpecies = !selectedSpecies.value || item.species === selectedSpecies.value;
+        const matchesQuery = item.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchQuery.value.toLowerCase());
+
+        return matchesCategory && matchesQuery && matchesStatus && matchesSpecies;
       });
 
       if (sortOption.value && isSortKey(sortOption.value)) {
@@ -159,7 +198,11 @@ export default {
       endDate,
       minDate,
       maxDate,
-      getImagePath
+      getImagePath,
+      selectedStatus,
+      uniqueStatuses,
+      selectedSpecies,
+      uniqueSpecies
 
     };
   },
