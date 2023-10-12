@@ -593,6 +593,8 @@ input {
 .search-container {
   position: relative;
   margin-bottom: 1rem;
+  background-color: #ffffff;
+
 }
 
 .search-box {
@@ -600,6 +602,8 @@ input {
   gap: 0.5rem;
   border-radius: 70px;
   height: 60px;
+  z-index: 999995;
+position:relative;
   border: 1px solid grey;
 }
 
@@ -642,5 +646,75 @@ input {
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
 }
+
+/* Stile base per la dropdown */
+.filters-dropdown {
+  background-color: #b6e7ff9e; /* Colore di sfondo simile a quello di GitHub */
+  border: 1px solid #e1e4e8; /* Colore del bordo */
+  border-radius: 5px; /* Angoli arrotondati */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
+  padding: 15px;
+  width: 100%;
+  max-width: 96.5%; /* Puoi cambiare secondo le tue esigenze */
+  margin: 10px 0;
+  position: absolute;
+  top:20px;
+  padding-top:60px;
+}
+
+/* Stile per i bottoni */
+.filters-dropdown button {
+  background-color: #fafbfc;
+  border: 1px solid #e1e4e8;
+  border-radius: 5px;
+  color: #24292e; /* Colore testo */
+  cursor: pointer;
+  margin: 5px;
+  padding: 8px 15px;
+  transition: background-color 0.2s;
+}
+
+.filters-dropdown button:hover {
+  background-color: #e1e4e8;
+}
+
+/* Stile per bottoni attivi */
+.filters-dropdown button.active {
+  background-color: #0366d6;
+  color: #ffffff;
+}
+
+/* Stile per contenitori dei filtri */
+.filters-dropdown .filter-category,
+.filters-dropdown .filter-status,
+.filters-dropdown .filter-species {
+  margin-bottom: 15px;
+}
+
+/* Stile per il selettore di ordinamento e il selettore della data */
+.filters-dropdown .sort-container,
+.filters-dropdown .date-range {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.filters-dropdown select, 
+.filters-dropdown input[type="date"] {
+  background-color: #fafbfc;
+  border: 1px solid #e1e4e8;
+  border-radius: 5px;
+  color: #24292e;
+  padding: 8px;
+  width: 100%; /* Per fare in modo che si adattino affianco */
+  transition: border-color 0.2s;
+}
+
+.filters-dropdown select:hover,
+.filters-dropdown input[type="date"]:hover {
+  border-color: #0366d6;
+}
+
 </style>
     
