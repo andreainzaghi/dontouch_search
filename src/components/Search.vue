@@ -50,6 +50,7 @@
   
   <script lang="ts">
   import { ref, computed } from 'vue';
+  import jsonData from '../assets/json/data.json';
 
   
   /* eslint-disable no-unused-vars */
@@ -74,67 +75,9 @@ declare global {
       const searchQuery = ref('');
       const selectedCategory = ref('');
       const sortOption = ref<SortKeys>('views');
-  
-      const data = ref([
-  {
-    id: 1,
-    title: 'A Deep Dive into Vue 3',
-    description: 'An extensive overview of the new features in Vue 3.',
-    category: 'Web Development',
-    datePublished: '2023-01-15',
-    views: 5000,
-    likes: 1200,
-    comments: 320
-  },
-  {
-    id: 2,
-    title: 'Responsive Design Essentials',
-    description: 'Learn the foundational techniques for crafting responsive web layouts.',
-    category: 'Design',
-    datePublished: '2023-02-20',
-    views: 6500,
-    likes: 980,
-    comments: 215
-  }, {
-    id: 3,
-    title: 'A Deep Dive into Vue 3',
-    description: 'An extensive overview of the new features in Vue 3.',
-    category: 'Web Development',
-    datePublished: '2023-01-15',
-    views: 5000,
-    likes: 1200,
-    comments: 320
-  },
-  {
-    id: 4,
-    title: 'Responsive Design Essentials',
-    description: 'Learn the foundational techniques for crafting responsive web layouts.',
-    category: 'Design',
-    datePublished: '2023-02-20',
-    views: 6500,
-    likes: 980,
-    comments: 215
-  }, {
-    id: 5,
-    title: 'A Deep Dive into Vue 3',
-    description: 'An extensive overview of the new features in Vue 3.',
-    category: 'Web Development',
-    datePublished: '2023-01-15',
-    views: 5000,
-    likes: 1200,
-    comments: 320
-  },
-  {
-    id: 6,
-    title: 'Responsive Design Essentials',
-    description: 'Learn the foundational techniques for crafting responsive web layouts.',
-    category: 'Design',
-    datePublished: '2023-02-20',
-    views: 6500,
-    likes: 980,
-    comments: 215
-  },
-      ]);
+        const data = ref(jsonData);
+
+      
       const startDate = ref('2022-01-01');  // puoi impostare una data di default
     const endDate = ref('2023-12-31');    // puoi impostare una data di default
 
