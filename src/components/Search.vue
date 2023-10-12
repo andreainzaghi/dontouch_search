@@ -172,17 +172,22 @@
   <transition-group name="shuffle" tag="div" class="cards-container">
       <div v-for="item in paginatedData" :key="item.id" class="card">
         <img :src="getImagePath(item.img)" class="card-image" />
-        <h2 class="card-title">{{ item.title }}</h2>
-        <p class="card-description">{{ item.description }}</p>
+  <h2 class="card-title">{{ item.title }}</h2>
+  <b>{{ item.category }}</b>
+  <div>
+    {{ item.status }}
+  </div>
+  <p class="card-description">{{ item.description }}</p>
 
-        <!-- Display statistics related to sorting -->
-        <div class="stats">
-          <span class="date-published">{{ item.datePublished }}</span>
-          <span class="views">{{ item.views }} views</span>
-          <span class="likes">{{ item.likes }} likes</span>
-          <span class="comments">{{ item.comments }} comments</span>
-        </div>
-      </div>
+  <!-- Display statistics related to sorting -->
+  <div class="stats">
+    <span class="date-published"><i class="fas fa-calendar-alt"></i> {{ item.datePublished }}</span>
+    <span class="views"><i class="fas fa-eye"></i> {{ item.views }} views</span>
+    <span class="likes"><i class="fas fa-thumbs-up"></i> {{ item.likes }} likes</span>
+    <span class="comments"><i class="fas fa-comment"></i> {{ item.comments }} comments</span>
+  </div>
+</div>
+
     </transition-group>
 </div>
     
