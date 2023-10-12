@@ -528,6 +528,7 @@ body {
   margin-right: 8px;
 }
 .class_navbar_conteiner button {
+  display: flex !important
 }
 /* Additional buttons, if any */
 .card-btn {
@@ -766,6 +767,11 @@ input {
 .filters-dropdown select:hover,
 .filters-dropdown input[type="date"]:hover {
   border-color: #0366d6;
+}
+#app > div > div > div.navigation-buttons > div{
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
 }
 </style>
     
