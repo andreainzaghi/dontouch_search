@@ -63,8 +63,8 @@
           </button>
           <button class="search-btn" @click="startSpeechRecognition">
             <svg
-              width="30px"
-              height="30px"
+              width="24px"
+              height="24px"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -464,6 +464,7 @@ input {
 }
 body {
   background-color: #f4f4f4;
+  margin:0 !important;
 }
 .date-range {
   display: flex;
@@ -799,8 +800,17 @@ input {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+}.filters-dropdown .sort-container[data-v-7cb41050], .filters-dropdown .date-range[data-v-7cb41050]
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0px !important;
 }
 
+.filters-dropdown select[data-v-7cb41050], .filters-dropdown input[type="date"][data-v-7cb41050]{
+  margin:0 !important;
+}
 .filters-dropdown select,
 .filters-dropdown input[type="date"] {
   background-color: #fafbfc;
@@ -824,6 +834,34 @@ input {
 #app > div > div > div.flex_cards_1 > div{
   width:100%;
 }
+@media screen and (max-width: 768px) {
+  .cards-container[data-v-7cb41050] {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
 
+  .card {
+    width: 100%;
+  }
+
+  .filters-dropdown {
+  background-color: #f3f3f3; /* Colore di sfondo simile a quello di GitHub */
+  border: 1px solid #e1e4e8; /* Colore del bordo */
+  border-radius: 5px; /* Angoli arrotondati */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
+  padding: 15px;
+  width: 100%;
+  max-width: 89%; /* Puoi cambiare secondo le tue esigenze */
+  margin: 10px 0;
+  position: absolute;
+  top: 20px;
+  padding-top: 60px;
+}
+  
+}
 </style>
     
