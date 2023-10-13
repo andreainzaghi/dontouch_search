@@ -161,7 +161,7 @@ body {
   flex-direction: column;
   width: 100%;
   max-width: 1500px;
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 .flex_cards_1 {
