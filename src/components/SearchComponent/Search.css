@@ -658,7 +658,15 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
     margin: 0;
     /* Rimuove margini aggiuntivi */
   }
-
+  .card_cotainer_top {
+    width: 100%;
+    background: rgb(236, 230, 228);
+    padding-top: 30px;
+    margin-top: -20px;
+    background: linear-gradient(0deg,
+        rgba(236, 230, 228, 0.10127801120448177) 0%,
+        rgba(0, 215, 255, 0.3561799719887955) 250%);
+  }
   .p_p {
     display: none;
   }
