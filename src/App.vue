@@ -8,7 +8,7 @@
 
 <script>
 
-import SearchComponent from './components/SearchComponent.vue';
+import SearchComponent from './components/SearchComponent/SearchComponent.vue';
 // import HelloWorld from './components/HelloWorld.vue';
 
 export default {

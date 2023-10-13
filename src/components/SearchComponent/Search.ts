@@ -1,6 +1,6 @@
 
 import { ref, computed, onMounted, watch } from "vue";
-// import jsonData from "../assets/json/data.json";
+// import jsonData from "../../assets/json/data.json";
 import  {defineComponent} from 'vue'
 
 /* eslint-disable no-unused-vars */
