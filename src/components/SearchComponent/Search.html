@@ -127,7 +127,7 @@
       <transition-group name="shuffle" tag="div" class="cards-container">
 
         <div v-for="item in paginatedData" :key="item.id" class="card">
-          <img :src="getImagePath(item.img)" class="card-image" />
+          <img v-lazy :data-lazy="getImagePath(item.img)" class="card-image" />
           <div style="padding: 0.4rem 0 0 0.6rem">
             <h2 class="card-title">{{ item.title }}</h2>
             <b style="font-size: 12px">{{ item.category }}</b>
