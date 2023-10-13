@@ -419,6 +419,10 @@ input {
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
 }
+#app>div>div>div.flex_card_i>div.search-container>div.filters-dropdown>div>div.sort-container>select{
+  margin:0 !important;
+  padding:6px !important;
+}
 
 #app>div>div>div.flex_card_i>div.search-container>div.filters-dropdown>div>div.sort-container>select {
   border-radius: 30px;
@@ -552,16 +556,30 @@ input {
   border-top: 1px solid lightgrey;
   padding-top: 0.3rem;
 }
+.sort-container{
+  width: 100%;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.sort-container select,.date-range input[type="date"]{
+  width: 100%;
+  margin: 5px 0 !important;
+}
+.sort-container select{
+  margin: 0 !important;
+}
 @media screen and (max-width: 1100px) {
   .card {
-    width: 48%;
+    width: 49%;
     margin: 1rem auto;
     box-sizing: border-box;
     overflow: hidden;
     color: #24292e;
   }
-}
-@media screen and (max-width: 768px) {
+}@media screen and (max-width: 768px) {
+
   .cards-container[data-v-7cb41050] {
     display: flex;
     flex-wrap: wrap;
@@ -651,5 +669,45 @@ input {
     /* Aggiunge spazio ai lati del testo */
     font-size: 16px;
     /* Modifica per adattare le dimensioni del testo */
+  }
+
+  /* Stile per dropdown dei filtri */
+  .filters-dropdown {
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 70vh !important;
+    overflow-y: scroll;
+  }
+  .card {
+    width: 100%;
+    margin: 0.8rem auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #24292e;
+  }
+
+  /* Stile per i bottoni dei filtri */
+  .filters-dropdown button {
+    width: 100%; /* Imposta la larghezza al 100% */
+    margin-bottom: 5px; /* Aggiunge un po' di spazio tra i bottoni */
+  }
+
+  /* Stile per i contenitori dei filtri */
+  .filters-dropdown .filter-category,
+  .filters-dropdown .filter-status,
+  .filters-dropdown .filter-species {
+    width: 100%;
+  }
+
+  /* Stile per il selettore di ordinamento e il selettore della data */
+  .filters-dropdown .sort-container,
+  .filters-dropdown .date-range {
+    flex-direction: column;
+  }
+
+  /* Stile per il selettore select e la data */
+  .filters-dropdown select,
+  .filters-dropdown input[type="date"] {
+    margin-bottom: 10px; /* Aggiunge un po' di spazio tra select e input data */
   }
 }

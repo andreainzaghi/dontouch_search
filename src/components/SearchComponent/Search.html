@@ -97,21 +97,23 @@
           </div>
 
           <!-- Advanced Sorting -->
-          <div class="sort-container">
-            <select v-model="sortOption">
-              <option value="">Sort by...</option>
-              <option value="datePublished">Publication Date</option>
-              <option value="views">Views</option>
-              <option value="likes">Likes</option>
-              <option value="comments">Comments</option>
-            </select>
-          </div>
+   <div class="container-tre_nput">
+    <div class="sort-container">
+      <select v-model="sortOption">
+        <option value="">Sort by...</option>
+        <option value="datePublished">Publication Date</option>
+        <option value="views">Views</option>
+        <option value="likes">Likes</option>
+        <option value="comments">Comments</option>
+      </select>
+    </div>
 
-          <!-- Date Range Selector -->
-          <div class="date-range">
-            <input type="date" v-model="startDate" :min="minDate" :max="endDate" />
-            <input type="date" v-model="endDate" :min="startDate" :max="maxDate" />
-          </div>
+    <!-- Date Range Selector -->
+    <div class="date-range">
+      <input type="date" v-model="startDate" :min="minDate" :max="endDate" />
+      <input type="date" v-model="endDate" :min="startDate" :max="maxDate" />
+    </div>
+   </div>
         </div>
       </div>
     </div>
