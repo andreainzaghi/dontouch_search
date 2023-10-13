@@ -24,7 +24,7 @@ export default defineComponent({
     const sortOption = ref<SortKeys>("views"); // Opzione per ordinare i risultati
     const selectedStatus = ref(""); // Stato selezionato per filtrare i risultati
     const selectedSpecies = ref(""); // Specie selezionata per filtrare i risultati
-    const data = ref<DataItem[]>([]); // Dati recuperati dal backend
+    // const data = ref<DataItem[]>([]); // Dati recuperati dal backend
     const currentPage = ref(1); // Pagina corrente per la paginazione
     const itemsPerPage = ref(6); // Numero di elementi per pagina
     const startDate = ref("2022-01-01"); // Data di inizio per filtrare i risultati

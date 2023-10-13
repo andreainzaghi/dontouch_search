@@ -1,6 +1,9 @@
 <template>
   <div>
-   
+
+    <!-- <SearchStatsComponent
+      v-bind="$refs.searchComponentRef"
+    />    -->
     <SearchComponent />
     <!-- <HelloWorld /> -->
   </div>
@@ -9,6 +12,7 @@
 <script>
 
 import SearchComponent from './components/SearchComponent/SearchComponent.vue';
+// import SearchStatsComponent from './components/SearchStatsComponent.vue';
 // import HelloWorld from './components/HelloWorld.vue';
 
 export default {
@@ -16,7 +20,7 @@ export default {
   components: {
 // HelloWorld,
     SearchComponent,
-   
+    // SearchStatsComponent
   }
 }
 </script>

@@ -40,10 +40,6 @@
   align-items: center;
 }
 
-.p_p {
-  transform: rotate(90deg);
-  transform: scale(1.1);
-}
 
 .input_btn_search button:nth-child(3) {
   border-left: 1px solid grey;
@@ -272,6 +268,10 @@ select:hover {
 
 .shuffle-move {
   transition: transform 1s;
+}
+.p_p {
+  transform: rotate(90deg) !important;
+  transform: scale(1.1);
 }
 
 /* Definizione delle animazioni */
@@ -552,17 +552,25 @@ input {
   border-top: 1px solid lightgrey;
   padding-top: 0.3rem;
 }
-
+@media screen and (max-width: 1100px) {
+  .card {
+    width: 48%;
+    margin: 1rem auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #24292e;
+  }
+}
 @media screen and (max-width: 768px) {
   .cards-container[data-v-7cb41050] {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
   }
-
+  
   .card {
     width: 100%;
   }
