@@ -1,7 +1,9 @@
 
-import { ref, computed, onMounted, watch } from "vue";
-// import jsonData from "../../assets/json/data.json";
-import  {defineComponent} from 'vue'
+import { defineComponent } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue';
+// import { DataItem } from '../../types';  // Aggiorna il percorso se necessario
+// import { isSortKey } from '../../utils';  // Aggiorna il percorso se necessario
+import { data as fetchedData, fetchData } from '../../dataFetch';
 
 /* eslint-disable no-unused-vars */
 declare global {
@@ -50,24 +52,23 @@ export default  defineComponent({
 
 
     // Fetch data from backend when component is mounted
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `http://127.0.0.1:5000/data?page=${currentPage.value}&items_per_page=${itemsPerPage.value}&search_query=${searchQuery.value}&selected_category=${selectedCategory.value}&sort_option=${sortOption.value}`
-        );
+    // const fetchData = async () => {
+    //   try {
+      //   const response = await fetch(
+      //     `http://127.0.0.1:5000/data?page=${currentPage.value}&items_per_page=${itemsPerPage.value}&search_query=${searchQuery.value}&selected_category=${selectedCategory.value}&sort_option=${sortOption.value}`
+      //   );
 
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
+      //   if (!response.ok) {
+      //     throw new Error("Network response was not ok");
+      //   }
 
-        const jsonData = await response.json();
-        data.value = jsonData;
-      } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
-      }
-    };
-    
-    // Watchers to update data when a reactive property changes
+      //   const jsonData = await response.json();
+      //   fetchedData.value = jsonData;
+      // } catch (error) {
+      //   console.error("There was a problem with the fetch operation:", error);
+      // }
+    // };
+
     watch(
       [
         currentPage,
@@ -80,11 +81,28 @@ export default  defineComponent({
         endDate,
         searchMethod,
       ],
-      fetchData
+      () => {
+        fetchData(
+          currentPage.value,
+          itemsPerPage.value,
+          searchQuery.value,
+          selectedCategory.value,
+          sortOption.value
+        );
+      }
     );
 
     // Ensure fetchData is called when the component is mounted
-    onMounted(fetchData);
+    onMounted(() => {
+      fetchData(
+        currentPage.value,
+        itemsPerPage.value,
+        searchQuery.value,
+        selectedCategory.value,
+        sortOption.value
+      );
+    });
+    
 
     const goBack = () => {
       if (currentPage.value > 1) {
@@ -99,23 +117,23 @@ export default  defineComponent({
     };
  
     const minDate = computed(() => {
-      return data.value.reduce((acc, item) => {
+      return fetchedData.value.reduce((acc, item) => {
         return item.datePublished < acc ? item.datePublished : acc;
       }, "9999-12-31");
     });
 
     const maxDate = computed(() => {
-      return data.value.reduce((acc, item) => {
+      return fetchedData.value.reduce((acc, item) => {
         return item.datePublished > acc ? item.datePublished : acc;
       }, "0000-01-01");
     });
 
     const uniqueStatuses = computed(() => {
-      return [...new Set(data.value.map((item) => item.status))];
+      return [...new Set(fetchedData.value.map((item) => item.status))];
     });
 
     const uniqueSpecies = computed(() => {
-      return [...new Set(data.value.map((item) => item.species))];
+      return [...new Set(fetchedData.value.map((item) => item.species))];
     });
     const startSpeechRecognition = () => {
   const SpeechRecognition =
@@ -145,13 +163,13 @@ export default  defineComponent({
 
 
     const uniqueCategories = computed(() => {
-      return [...new Set(data.value.map((item) => item.category))];
+      return [...new Set(fetchedData.value.map((item) => item.category))];
     });
     const getImagePath = (imageName: any) => {
       return require(`@/assets/img/${imageName}`);
     };
     const sortedAndFilteredData = computed(() => {
-      const result = data.value.filter((item) => {
+      const result = fetchedData.value.filter((item) => {
         const matchesCategory =
           !selectedCategory.value || item.category === selectedCategory.value;
         const matchesStatus =
@@ -186,7 +204,7 @@ export default  defineComponent({
       });
     });
     const totalImages = computed(() => {
-      return data.value.length;
+      return fetchedData.value.length;
     });
     const totalPages = computed(() => {
       return Math.ceil(sortedAndFilteredData.value.length / itemsPerPage.value);

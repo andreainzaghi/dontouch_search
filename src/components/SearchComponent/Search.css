@@ -323,9 +323,9 @@
   .overlay_black {
     width: 100%;
     height: 100%;
-    background-color: rgba(58, 63, 63, 0.4); /* Use rgba for translucent black background */
+    background-color: rgba(35, 37, 37, 0.452); /* Use rgba for translucent black background */
     position: fixed;
-    backdrop-filter: blur(2px); /* This gives the frosted glass effect */
+    backdrop-filter: blur(3px); /* This gives the frosted glass effect */
     top: 0;
     left: 0;
     bottom: 0;
@@ -382,24 +382,33 @@
     left: 0;
     right: 0;
     z-index: 99999;
-    border-radius: 10px;
+    border-radius: 1.1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out;
   }
+  #app > div > div > div.flex_card_i > div.search-container > div.filters-dropdown > div > div.sort-container > select{
+    border-radius:30px;
+    border:1px solid rgb(170, 170, 170);
+  }
+
+  #app > div > div > div.flex_card_i > div.search-container > div.filters-dropdown > div > div.date-range > input[type=date]{
+    border-radius: 30px;
+    border: 1px solid rgb(168, 168, 168);
   
+
+  }
   /* Stile base per la dropdown */
   .filters-dropdown {
     background-color: #e3f9fdeb; /* Colore di sfondo simile a quello di GitHub */
     border: 1px solid #b3b3b3; /* Colore del bordo */
-    border-radius: 5px; /* Angoli arrotondati */
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
     padding: 15px;
     width: auto;
     margin: 10px 0;
     position: absolute;
-    top: 10px;
+    top: 2px;
     padding-top: 40px;
   }
   
@@ -477,6 +486,7 @@
     width: 100%; /* Per fare in modo che si adattino affianco */
     transition: border-color 0.2s;
   }
+  
   #app
     > div
     > div.flex_cards
