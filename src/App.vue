@@ -1,21 +1,21 @@
 <template>
   <div>
    
-    <SearchDeep />
+    <SearchComponent />
     <!-- <HelloWorld /> -->
   </div>
 </template>
 
 <script>
 
-import SearchDeep from './components/Search.vue';
+import SearchComponent from './components/SearchComponent.vue';
 // import HelloWorld from './components/HelloWorld.vue';
 
 export default {
   name: 'App',
   components: {
 // HelloWorld,
-    SearchDeep,
+    SearchComponent,
    
   }
 }

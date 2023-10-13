@@ -1,0 +1,581 @@
+.card {
+    margin-bottom: 15px;
+    border: 1px solid #858585;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+  }
+  .card:hover {
+    background-color: #e9e9e9;
+  }
+  
+  @keyframes flashing {
+    0% { fill: #000000; }
+    50% { fill: #FF0000; }
+    100% { fill: #000000; }
+  }
+  
+  .recording {
+    animation: flashing 1s infinite;
+  }
+  
+  .stats {
+    margin-top: 8px;
+    font-size: 0.85em;
+    color: #555;
+  }
+  .input_btn_search {
+    display: flex;
+    align-items: center;
+  }
+  .p_p {
+    transform: rotate(90deg);
+    transform: scale(1.1);
+  }
+  .input_btn_search button:nth-child(3) {
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    height: 100%;
+    border-top-right-radius: 350px;
+    border-bottom-right-radius: 350px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .input_btn_search button:nth-child(1) {
+    height: 100%;
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  select,
+  input {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 3px;
+  }
+  body {
+    background-color: #f4f4f4;
+    margin: 0 !important;
+  }
+  .date-range {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 0;
+  }
+  
+  .date-range input[type="date"] {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  /* Flex container to hold the cards */
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  /* Individual card styles */
+  .card {
+    width: 31%;
+    margin: 1rem auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #24292e;
+  }
+  .search-btn svg{
+    margin: 0 0.25rem;
+  }
+  
+  .search-btn{
+    background-color: #ededed;
+  
+  }
+  /* Hover effect inspired by GitHub's buttons */
+  .card:hover .card-header {
+    background-color: #f6f8fa;
+  }
+  
+  /* Card header with a darker background */
+  .card-header {
+    background-color: #e1e4e8;
+    padding: 10px;
+    border-bottom: 1px solid #d1d5da;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card-title {
+    margin: 0;
+    font-weight: bold;
+    color:#003879;
+    font-size: 1.2rem;
+  }
+  
+  /* For icons or thumbnails */
+  .card-image {
+    width: 100%;
+    display: block;
+  }
+  
+  .card-body {
+    padding: 10px;
+  }
+  
+  .card-description {
+    margin-top: 10px;
+    font-size: 0.8em;
+    /* max-height:0px; */
+    overflow:hidden;
+    color: #586069;
+  }
+  
+  .flex_cards {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width:1500px;
+    margin: 0 auto;
+  }
+  .flex_cards_1 {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+  }
+  .stats span {
+    margin-right: 8px;
+  }
+  .class_navbar_conteiner button {
+    display: flex !important;
+  }
+  #app
+    > div
+    > div.flex_cards
+    > div.flex_card_i
+    > div.card_cotainer_top
+    > div
+    > div:nth-child(3)
+    > div {
+    position: relative;
+  }
+  
+  .stats p {
+    padding: 0px;
+    font-weight: bold;
+    color: rgb(66, 66, 66);
+    margin: 1px 0;
+    font-size: 0.75rem;
+  }
+  .class_navbar_conteiner {
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+  }
+  /* Additional buttons, if any */
+  .card-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: #0366d6;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card-btn:hover {
+    background-color: #005cc5;
+  }
+  
+  /* Card footer for additional information */
+  .card-footer {
+    background-color: #fafbfc;
+    border-top: 1px solid #d1d5da;
+    padding: 10px;
+    font-size: 0.8em;
+    color: #586069;
+  }
+  
+  /* Helper class to visually separate the elements inside the cards */
+  .card-divider {
+    margin: 10px 0;
+    border-bottom: 1px solid #d1d5da;
+  }
+  
+  /* Making the search bar resemble GitHub's */
+  input {
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .card_cotainer_top {
+    width: 100%;
+    background: rgb(236, 230, 228);
+    padding-top: 50px;
+    margin-top: -20px;
+    background: linear-gradient(
+      0deg,
+      rgba(236, 230, 228, 0.10127801120448177) 0%,
+      rgba(0, 215, 255, 0.3561799719887955) 250%
+    );
+  }
+  input:focus {
+  }
+  
+  button {
+    vertical-align: top;
+  }
+  
+  /* Making select dropdown resemble GitHub's dropdowns */
+  select {
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+    padding: 5px;
+    font-size: 14px;
+    background-color: #fafbfc;
+    transition: background-color 0.3s ease;
+  }
+  
+  select:hover {
+    background-color: #f6f8fa;
+  }
+  .shuffle-move {
+    transition: transform 1s;
+  }
+  
+  /* Definizione delle animazioni */
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+  
+  .card-enter-active,
+  .card-leave-active {
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  }
+  
+  .card-enter, .card-leave-to /* .card-leave-active in <2.1.8 */ {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  .show-dropdown {
+    max-height: 500px; /* You can adjust this value based on content */
+  }
+  /* Base and Reset styles */
+  body {
+    background-color: #f4f4f4;
+    font-family: "Arial", sans-serif;
+  }
+  
+  button,
+  select,
+  input {
+    outline: none;
+    border: none;
+  }
+  
+  /* Search Container */
+  .search-container {
+    position: relative;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    width: 80%;
+    border-radius: 50px;
+    margin: 0 auto;
+  }
+  .class_navbar_conteiner {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 99%;
+  }
+  .overlay_black {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(58, 63, 63, 0.4); /* Use rgba for translucent black background */
+    position: fixed;
+    backdrop-filter: blur(2px); /* This gives the frosted glass effect */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 555;
+  }
+  
+  .search-box {
+    display: flex;
+    gap: 0.5rem;
+    border-radius: 50px;
+    height: 40px;
+    width:100%;
+    z-index: 999995;
+    position: relative;
+    background: #fff;
+    border: 1px solid rgb(199, 199, 199);
+  }
+  
+  .search-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border-radius: 50px;
+    border: none;
+  
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* .search-input:focus {
+    border-color: #0366d6;
+  } */
+  .flex_card_i {
+    width: 100%;
+  
+    margin: 0 auto;
+    height: 100%;
+  }
+  .filters-btn {
+    padding: 10px 15px;
+    border-radius: 25px;
+    background-color: #0366d6;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .filters-btn:hover {
+    background-color: #005cc5;
+  }
+  
+  .filters-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+  }
+  
+  /* Stile base per la dropdown */
+  .filters-dropdown {
+    background-color: #e3f9fdeb; /* Colore di sfondo simile a quello di GitHub */
+    border: 1px solid #b3b3b3; /* Colore del bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
+    padding: 15px;
+    width: auto;
+    margin: 10px 0;
+    position: absolute;
+    top: 10px;
+    padding-top: 40px;
+  }
+  
+  /* Stile per i bottoni */
+  .filters-dropdown button {
+    background-color: #f0f0f0;
+    border: 1px solid #979797;
+    border-radius: 20px;
+    color: #24292e; /* Colore testo */
+    cursor: pointer;
+    margin: 5px;
+    padding: 8px 15px;
+    transition: background-color 0.2s;
+  }
+  
+  .filters-dropdown button:hover {
+    background-color: rgb(209, 241, 255);
+  }
+  
+  /* Stile per bottoni attivi */
+  .filters-dropdown button.active {
+    background-color: #0366d6;
+    color: #ffffff;
+  }
+  .card_overlay_sfumato{
+    position:relative;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: linear-gradient(
+      0deg,
+      rgba(236, 230, 228, 0.10127801120448177) 0%,
+      rgb(0, 217, 255) 250%
+    );
+    z-index: 45;
+  }
+  /* Stile per contenitori dei filtri */
+  .filters-dropdown .filter-category,
+  .filters-dropdown .filter-status,
+  .filters-dropdown .filter-species {
+    margin-bottom: 15px;
+  }
+  .btn_btn_btn button {
+    border-radius: 80px;
+    border: 1px solid lightgrey;
+  }
+  /* Stile per il selettore di ordinamento e il selettore della data */
+  .filters-dropdown .sort-container,
+  .filters-dropdown .date-range {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .filters-dropdown .sort-container[data-v-7cb41050],
+  .filters-dropdown .date-range[data-v-7cb41050] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0px !important;
+  }
+  
+  .filters-dropdown select[data-v-7cb41050],
+  .filters-dropdown input[type="date"][data-v-7cb41050] {
+    margin: 0 !important;
+  }
+  .filters-dropdown select,
+  .filters-dropdown input[type="date"] {
+    background-color: #fafbfc;
+    border: 1px solid #e1e4e8;
+    border-radius: 5px;
+    color: #24292e;
+    padding: 8px;
+    width: 100%; /* Per fare in modo che si adattino affianco */
+    transition: border-color 0.2s;
+  }
+  #app
+    > div
+    > div.flex_cards
+    > div.flex_card_i
+    > div.search-container
+    > div.filters-dropdown
+    > div
+    > div.date-range
+    > input[type="date"]:nth-child(2) {
+    margin: 0 0 0 10px !important;
+  }
+  .filters-dropdown select:hover,
+  .filters-dropdown input[type="date"]:hover {
+    border-color: #0366d6;
+  }
+  #app > div > div > div.navigation-buttons > div {
+    display: flex !important;
+    align-items: center;
+    /* justify-content: space-between; */
+  }
+  #app > div > div > div.flex_cards_1 > div {
+    width: 100%;
+  }
+  
+  .stats {
+    border-top: 1px solid lightgrey;
+    padding-top: 0.3rem;
+  }
+  @media screen and (max-width: 768px) {
+    .cards-container[data-v-7cb41050] {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 90%;
+      margin: 0 auto;
+    }
+  
+    .card {
+      width: 100%;
+    }
+  
+    .filters-dropdown {
+      border: 1px solid #e1e4e8; /* Colore del bordo */
+      border-radius: 5px; /* Angoli arrotondati */
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
+      padding: 15px;
+      margin: 10px 0;
+      position: absolute;
+      top: 20px;
+      padding-top: 30px;
+    }
+    /* Adatta il contenitore della navbar */
+    .class_navbar_conteiner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px; /* Aggiunge un po' di spazio attorno */
+    }
+  
+    /* Stilizzazione della prima sezione con i tre elementi */
+    .class_navbar_conteiner > div:first-child {
+      display: flex;
+      width: 100%;
+      justify-content: space-between; /* Distribuisce gli elementi uniformemente */
+      align-items: center; /* Allinea gli elementi verticalmente al centro */
+      margin-bottom: 10px; /* Spazio tra la prima e la seconda sezione */
+    }
+  
+    /* Posiziona l'icona della ricerca di FontAwesome */
+    .class_navbar_conteiner div:first-child:before {
+      content: "\f002"; /* Icona di ricerca di FontAwesome */
+      font-family: FontAwesome;
+      font-size: 24px; /* Aumenta o riduci per adattare le dimensioni dell'icona */
+    }
+  
+    /* Stile per l'immagine del logo */
+    .class_navbar_conteiner > div:first-child > img {
+      width: 50px; /* Modifica per adattare le dimensioni del logo */
+      height: auto;
+    }
+  
+    /* Stile per le tre stangatte (|||) */
+    .class_navbar_conteiner > div:first-child > p {
+      font-size: 24px; /* Modifica per adattare le dimensioni delle stangatte */
+      margin: 0; /* Rimuove margini aggiuntivi */
+    }
+    .p_p {
+      display: none;
+    }
+    /* Stilizzazione della seconda sezione con il paginator */
+    .class_navbar_conteiner > div:nth-child(2) {
+      display: flex;
+      align-items: center; /* Allinea gli elementi verticalmente al centro */
+    }
+  
+    /* Stile per il testo del paginator (page 1 of 2) */
+    .class_navbar_conteiner div:nth-child(2) p {
+      margin: 0 10px; /* Aggiunge spazio ai lati del testo */
+      font-size: 16px; /* Modifica per adattare le dimensioni del testo */
+    }
+  }
