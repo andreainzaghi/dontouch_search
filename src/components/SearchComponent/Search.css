@@ -471,8 +471,8 @@ input {
 
 /* Stile per bottoni attivi */
 .filters-dropdown button.active {
-  background-color: #0366d6;
-  color: #ffffff;
+  background: rgb(16,158,23);
+  background: linear-gradient(148deg, rgba(16,158,23,1) 0%, rgba(31,179,48,0.7819502801120448) 100%);  color: #ffffff;
 }
 
 .card_overlay_sfumato {
@@ -569,6 +569,13 @@ input {
 }
 .sort-container select{
   margin: 0 !important;
+}
+
+.bg_gradient_color_btn{
+  background: rgb(0, 0, 0);
+  color: #fff !important;
+
+background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
 }
 @media screen and (max-width: 1100px) {
   .card {

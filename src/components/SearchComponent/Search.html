@@ -47,7 +47,7 @@
           <button @click="showFilterDropdown = !showFilterDropdown">
             FILTERS
           </button>
-          <b style="margin:auto 0.4rem auto 0.1rem;font-weight:100;font-size:1.5rem;transform: rotate(45deg);color:rgb(42, 177, 255);height:auto;"
+          <b style="margin:auto 0.4rem auto 0.1rem;font-weight:100;font-size:1.5rem;transform: rotate(45deg);color:rgb(35, 57, 70);height:auto;"
             v-show="showFilterDropdown">+</b>
           <button class="search-btn" @click="startSpeechRecognition">
             <svg :class="{ 'recording': isRecording }" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
@@ -65,8 +65,8 @@
         <div class="slide_show_on_off_filters">
           <!-- Category Filter -->
           <div class="filter-category">
-            <button @click="selectedCategory = ''" style="background-color: rgb(255, 124, 31)">
-              All Categories
+            <button @click="selectedCategory = ''" class="bg_gradient_color_btn">
+              All Genders
             </button>
             <button v-for="category in uniqueCategories" :key="category" @click="selectedCategory = category"
               :class="{ active: selectedCategory === category }">
@@ -76,7 +76,7 @@
 
           <!-- Status Filter -->
           <div class="filter-status">
-            <button @click="selectedStatus = ''" style="background-color: rgb(255, 249, 62)">
+            <button @click="selectedStatus = ''" class="bg_gradient_color_btn">
               All Statuses
             </button>
             <button v-for="status in uniqueStatuses" :key="status" @click="selectedStatus = status"
@@ -87,7 +87,7 @@
 
           <!-- Species Filter -->
           <div class="filter-species">
-            <button @click="selectedSpecies = ''" style="background-color: rgb(127, 234, 33)">
+            <button @click="selectedSpecies = ''" class="bg_gradient_color_btn">
               All Species
             </button>
             <button v-for="species in uniqueSpecies" :key="species" @click="selectedSpecies = species"
