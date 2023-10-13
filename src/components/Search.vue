@@ -1,6 +1,10 @@
 <template>
   <div class="flex_cards">
     <div class="overlay_black"  v-show="showFilterDropdown"></div>
+
+
+    <!-- //NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR -->
+
     <div class="flex_cards_1">
       <div class="navigation-buttons">
         <div class="class_navbar_conteiner">
@@ -48,7 +52,14 @@
         </div>
       </div>
     </div>
+
+
+    <!-- //NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR -->
+
+   
     <div class="flex_card_i">
+
+      <!-- //SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH -->
       <div class="search-container">
         <!-- Search Box -->
         <div class="search-box">
@@ -57,17 +68,9 @@
             v-model="searchQuery"
             placeholder="Search..."
           />
-          <!-- <div>
-            <select v-model="searchMethod">
-              <option value="default">Ricerca standard</option>
-              <option value="weighted">Ricerca ponderata</option>
-              <option value="fuzzy">Ricerca fuzzy</option>
-            </select>
-          </div> -->
+        
           <div class="input_btn_search">
-            <!-- //scrivi una select option con 5 elementi -->
-            <!-- <button class="search-btn" @click="search">...GDGD</button> -->
-
+          
             <button @click="showFilterDropdown = !showFilterDropdown">
               FILTERS
             </button>
@@ -179,6 +182,10 @@
           </div>
         </div>
       </div>
+
+      <!-- //SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH -->
+
+      <!-- //CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD -->
       <!-- Cards Display -->
       <div class="card_cotainer_top">
         <transition-group name="shuffle" tag="div" class="cards-container">
@@ -219,6 +226,9 @@
           </div>
         </transition-group>
       </div>
+
+      <!-- //CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD//CARD -->
+
     </div>
   </div>
 </template>
@@ -633,7 +643,7 @@ body {
 }
 
 .search-btn{
-  background-color: #61daff;
+  background-color: #ededed;
 
 }
 /* Hover effect inspired by GitHub's buttons */
