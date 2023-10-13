@@ -1,6 +1,6 @@
 <template>
   <div>
-
+   
     <SearchDeep />
     <HelloWorld />
   </div>
@@ -15,7 +15,8 @@ export default {
   name: 'App',
   components: {
 HelloWorld,
-    SearchDeep
+    SearchDeep,
+   
   }
 }
 </script>

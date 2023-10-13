@@ -1,208 +1,222 @@
 <template>
   <div class="flex_cards">
     <div class="flex_cards_1">
-    <!-- Navigation Buttons -->
-    <div class="navigation-buttons">
-      <div class="class_navbar_conteiner">
-        <!-- logo// -->
-        <img src="../assets/img/logo.png" alt="">
-       <div style="display:flex;align-items: center;" class="btn_btn_btn">
-        <button @click="goBack" :disabled="isBackDisabled">
-          <svg
-            width="30px"
-            height="30px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6 12H18M6 12L11 7M6 12L11 17"
-              stroke="#000000"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <p style="padding:0 1rem;">Page {{ currentPage }} of {{ Math.ceil(totalImages / 6) }}</p>
-        <button @click="goForward" :disabled="isForwardDisabled">
-          <svg
-            width="30px"
-            height="30px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6 12H18M18 12L13 7M18 12L13 17"
-              stroke="#000000"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-       </div>
-       <p class="p_p">|||</p>
+      <div class="navigation-buttons">
+        <div class="class_navbar_conteiner">
+          <img src="../assets/img/logo.png" alt="" />
+          <div style="display: flex; align-items: center" class="btn_btn_btn">
+            <button @click="goBack" :disabled="isBackDisabled">
+              <svg
+                width="30px"
+                height="30px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 12H18M6 12L11 7M6 12L11 17"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <p style="padding: 0 1rem">
+              Page {{ currentPage }} of {{ Math.ceil(totalImages / 6) }}
+            </p>
+            <button @click="goForward" :disabled="isForwardDisabled">
+              <svg
+                width="30px"
+                height="30px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 12H18M18 12L13 7M18 12L13 17"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <p class="p_p">|||</p>
+        </div>
       </div>
-    </div>
     </div>
     <div class="flex_card_i">
+      <div class="search-container">
+        <!-- Search Box -->
+        <div class="search-box">
+          <input
+            class="search-input"
+            v-model="searchQuery"
+            placeholder="Search..."
+          />
+          <!-- <div>
+            <select v-model="searchMethod">
+              <option value="default">Ricerca standard</option>
+              <option value="weighted">Ricerca ponderata</option>
+              <option value="fuzzy">Ricerca fuzzy</option>
+            </select>
+          </div> -->
+          <div class="input_btn_search">
+            <!-- //scrivi una select option con 5 elementi -->
+            <!-- <button class="search-btn" @click="search">...GDGD</button> -->
 
-    <div class="search-container">
-      <!-- Search Box -->
-      <div class="search-box">
-        <input
-          class="search-input"
-          v-model="searchQuery"
-          placeholder="Search..."
-        />
-        <div> <select name="" id="">
-            <option value="">All</option>
-            <option value="">Category</option>
-            <option value="">Status</option>
-            <option value="">Species</option>
-            <option value="">Title</option>
-          </select></div>
-        <div class="input_btn_search">
-          <!-- //scrivi una select option con 5 elementi -->
-        
-          <button @click="showFilterDropdown = !showFilterDropdown">
-            FILTERS
-          </button>
-          <button class="search-btn" @click="startSpeechRecognition">
-            <svg
-              width="24px"
-              height="24px"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19 10V12C19 15.866 15.866 19 12 19M5 10V12C5 15.866 8.13401 19 12 19M12 19V22M8 22H16M12 15C10.3431 15 9 13.6569 9 12V5C9 3.34315 10.3431 2 12 2C13.6569 2 15 3.34315 15 5V12C15 13.6569 13.6569 15 12 15Z"
-                stroke="#000000"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+            <button @click="showFilterDropdown = !showFilterDropdown">
+              FILTERS
+            </button>
+            <button class="search-btn" @click="startSpeechRecognition">
+              <svg
+                width="24px"
+                height="24px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 10V12C19 15.866 15.866 19 12 19M5 10V12C5 15.866 8.13401 19 12 19M12 19V22M8 22H16M12 15C10.3431 15 9 13.6569 9 12V5C9 3.34315 10.3431 2 12 2C13.6569 2 15 3.34315 15 5V12C15 13.6569 13.6569 15 12 15Z"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filters Dropdown -->
+        <div class="filters-dropdown" v-show="showFilterDropdown">
+          <div class="slide_show_on_off_filters">
+            <!-- Category Filter -->
+            <div class="filter-category">
+              <button
+                @click="selectedCategory = ''"
+                style="background-color: rgb(255, 124, 31)"
+              >
+                All Categories
+              </button>
+              <button
+                v-for="category in uniqueCategories"
+                :key="category"
+                @click="selectedCategory = category"
+                :class="{ active: selectedCategory === category }"
+              >
+                {{ category }}
+              </button>
+            </div>
+
+            <!-- Status Filter -->
+            <div class="filter-status">
+              <button
+                @click="selectedStatus = ''"
+                style="background-color: rgb(255, 249, 62)"
+              >
+                All Statuses
+              </button>
+              <button
+                v-for="status in uniqueStatuses"
+                :key="status"
+                @click="selectedStatus = status"
+                :class="{ active: selectedStatus === status }"
+              >
+                {{ status }}
+              </button>
+            </div>
+
+            <!-- Species Filter -->
+            <div class="filter-species">
+              <button
+                @click="selectedSpecies = ''"
+                style="background-color: rgb(127, 234, 33)"
+              >
+                All Species
+              </button>
+              <button
+                v-for="species in uniqueSpecies"
+                :key="species"
+                @click="selectedSpecies = species"
+                :class="{ active: selectedSpecies === species }"
+              >
+                {{ species }}
+              </button>
+            </div>
+
+            <!-- Advanced Sorting -->
+            <div class="sort-container">
+              <select v-model="sortOption">
+                <option value="">Sort by...</option>
+                <option value="datePublished">Publication Date</option>
+                <option value="views">Views</option>
+                <option value="likes">Likes</option>
+                <option value="comments">Comments</option>
+              </select>
+            </div>
+
+            <!-- Date Range Selector -->
+            <div class="date-range">
+              <input
+                type="date"
+                v-model="startDate"
+                :min="minDate"
+                :max="endDate"
               />
-            </svg>
-          </button>
+              <input
+                type="date"
+                v-model="endDate"
+                :min="startDate"
+                :max="maxDate"
+              />
+            </div>
+          </div>
         </div>
       </div>
+      <!-- Cards Display -->
+      <div class="card_cotainer_top">
+        <transition-group name="shuffle" tag="div" class="cards-container">
+          <div v-for="item in paginatedData" :key="item.id" class="card">
+            <img :src="getImagePath(item.img)" class="card-image" />
+            <div style="padding: 0.4rem 0 0 0.6rem">
+              <h2 class="card-title">{{ item.title }}</h2>
+              <b style="font-size: 12px">{{ item.category }}</b>
+              <div
+                style="
+                  padding: 0px 12px;
+                  background-color: rgb(209, 241, 255);
+                  border-radius: 98px;
+                  width: 80px;
+                  border: 1px solid rgb(158, 158, 158);
+                "
+              >
+                {{ item.status }}
+              </div>
+              <p class="card-description">{{ item.description }}</p>
 
-      <!-- Filters Dropdown -->
-      <div class="filters-dropdown" v-show="showFilterDropdown">
-        <div class="slide_show_on_off_filters">
-          <!-- Category Filter -->
-          <div class="filter-category">
-            <button
-              @click="selectedCategory = ''"
-              style="background-color: rgb(255, 124, 31)"
-            >
-              All Categories
-            </button>
-            <button
-              v-for="category in uniqueCategories"
-              :key="category"
-              @click="selectedCategory = category"
-              :class="{ active: selectedCategory === category }"
-            >
-              {{ category }}
-            </button>
+              <!-- Display statistics related to sorting -->
+              <div class="stats">
+                <p class="date-published">
+                  <i class="fas fa-calendar-alt"></i> {{ item.datePublished }}
+                </p>
+                <p class="views">
+                  <i class="fas fa-eye"></i> {{ item.views }} views
+                </p>
+                <p class="likes">
+                  <i class="fas fa-thumbs-up"></i> {{ item.likes }} likes
+                </p>
+                <p class="comments">
+                  <i class="fas fa-comment"></i> {{ item.comments }} comments
+                </p>
+              </div>
+            </div>
           </div>
-
-          <!-- Status Filter -->
-          <div class="filter-status">
-            <button
-              @click="selectedStatus = ''"
-              style="background-color: rgb(255, 249, 62)"
-            >
-              All Statuses
-            </button>
-            <button
-              v-for="status in uniqueStatuses"
-              :key="status"
-              @click="selectedStatus = status"
-              :class="{ active: selectedStatus === status }"
-            >
-              {{ status }}
-            </button>
-          </div>
-
-          <!-- Species Filter -->
-          <div class="filter-species">
-            <button
-              @click="selectedSpecies = ''"
-              style="background-color: rgb(127, 234, 33)"
-            >
-              All Species
-            </button>
-            <button
-              v-for="species in uniqueSpecies"
-              :key="species"
-              @click="selectedSpecies = species"
-              :class="{ active: selectedSpecies === species }"
-            >
-              {{ species }}
-            </button>
-          </div>
-
-          <!-- Advanced Sorting -->
-          <div class="sort-container">
-            <select v-model="sortOption">
-              <option value="">Sort by...</option>
-              <option value="datePublished">Publication Date</option>
-              <option value="views">Views</option>
-              <option value="likes">Likes</option>
-              <option value="comments">Comments</option>
-            </select>
-          </div>
-
-          <!-- Date Range Selector -->
-          <div class="date-range">
-            <input
-              type="date"
-              v-model="startDate"
-              :min="minDate"
-              :max="endDate"
-            />
-            <input
-              type="date"
-              v-model="endDate"
-              :min="startDate"
-              :max="maxDate"
-            />
-          </div>
-        </div>
+        </transition-group>
       </div>
     </div>
-    <!-- Cards Display -->
-<div class="card_cotainer_top">
-  <transition-group name="shuffle" tag="div" class="cards-container">
-      <div v-for="item in paginatedData" :key="item.id" class="card">
-        <img :src="getImagePath(item.img)" class="card-image" />
-  <div style="padding:0.4rem  0  0  0.6rem;">
-    <h2 class="card-title">{{ item.title }}</h2>
-  <b style="font-size:12px;">{{ item.category }}</b>
-  <div style="padding:0px 12px;background-color:rgb(209, 241, 255);border-radius: 98px;width:80px;border:1px solid rgb(158, 158, 158);">
-    {{ item.status }}
-  </div>
-  <p class="card-description">{{ item.description }}</p>
-
-  <!-- Display statistics related to sorting -->
-  <div class="stats">
-    <p class="date-published"><i class="fas fa-calendar-alt"></i> {{ item.datePublished }}</p>
-    <p class="views"><i class="fas fa-eye"></i> {{ item.views }} views</p>
-    <p class="likes"><i class="fas fa-thumbs-up"></i> {{ item.likes }} likes</p>
-    <p class="comments"><i class="fas fa-comment"></i> {{ item.comments }} comments</p>
-  </div>
-  </div>
-</div>
-
-    </transition-group>
-</div>
-    
-  </div>
   </div>
 </template>
 
@@ -253,6 +267,7 @@ export default {
     const startDate = ref("2022-01-01");
     const endDate = ref("2023-12-31");
     const showFilterDropdown = ref(false);
+    const searchMethod = ref("default");
 
     // Fetch data from backend when component is mounted
     const fetchData = async () => {
@@ -283,6 +298,7 @@ export default {
         sortOption,
         startDate,
         endDate,
+        searchMethod,
       ],
       fetchData
     );
@@ -299,6 +315,74 @@ export default {
     const goForward = () => {
       if (currentPage.value < totalPages.value) {
         currentPage.value += 1;
+      }
+    };
+    const standardSearch = () => {
+      const results = data.value.filter(
+        (item) =>
+          item.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+          item.description
+            .toLowerCase()
+            .includes(searchQuery.value.toLowerCase())
+      );
+      console.log("Standard Search Results:", results);
+      return results;
+    };
+
+    const weightedSearch = () => {
+      const filteredResults = data.value.filter((item) =>
+        item.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+          ? true
+          : item.description
+              .toLowerCase()
+              .includes(searchQuery.value.toLowerCase())
+          ? true
+          : false
+      );
+      const sortedResults = filteredResults.sort((a, b) => {
+        const aMatch = a.title
+          .toLowerCase()
+          .includes(searchQuery.value.toLowerCase())
+          ? 1
+          : 0;
+        const bMatch = b.title
+          .toLowerCase()
+          .includes(searchQuery.value.toLowerCase())
+          ? 1
+          : 0;
+        return bMatch - aMatch;
+      });
+      console.log("Weighted Search Filtered Results:", filteredResults);
+      console.log("Weighted Search Sorted Results:", sortedResults);
+      return sortedResults;
+    };
+
+    const fuzzySearch = () => {
+      const results = data.value.filter(
+        (item) =>
+          item.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+          item.description
+            .toLowerCase()
+            .includes(searchQuery.value.toLowerCase())
+      );
+      console.log(
+        "Fuzzy Search Results (currently same as standard):",
+        results
+      );
+      return results;
+    };
+
+    const search = () => {
+      console.log("Search method selected:", searchMethod.value);
+      switch (searchMethod.value) {
+        case "default":
+          return standardSearch();
+        case "weighted":
+          return weightedSearch();
+        case "fuzzy":
+          return fuzzySearch();
+        default:
+          return standardSearch();
       }
     };
 
@@ -381,8 +465,8 @@ export default {
       });
     });
     const totalImages = computed(() => {
-  return data.value.length;
-});
+      return data.value.length;
+    });
     const totalPages = computed(() => {
       return Math.ceil(sortedAndFilteredData.value.length / itemsPerPage.value);
     });
@@ -422,6 +506,8 @@ export default {
       goForward,
       isBackDisabled,
       isForwardDisabled,
+      searchMethod,
+      search,
       showFilterDropdown,
     };
   },
@@ -448,9 +534,9 @@ export default {
 .input_btn_search {
   display: flex;
 }
-.p_p{
-  transform:rotate(90deg);
-  transform:scale(1.1);
+.p_p {
+  transform: rotate(90deg);
+  transform: scale(1.1);
 }
 .input_btn_search button:nth-child(2) {
   border-left: 1px solid grey;
@@ -478,7 +564,7 @@ input {
 }
 body {
   background-color: #f4f4f4;
-  margin:0 !important;
+  margin: 0 !important;
 }
 .date-range {
   display: flex;
@@ -503,7 +589,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width:80%;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -515,7 +601,14 @@ body {
   overflow: hidden;
   color: #24292e;
 }
+.search-btn svg{
+  margin: 0 0.25rem;
+}
 
+.search-btn{
+  background-color: #61daff;
+
+}
 /* Hover effect inspired by GitHub's buttons */
 .card:hover .card-header {
   background-color: #f6f8fa;
@@ -556,34 +649,39 @@ body {
   width: 100%;
   margin: 0 auto;
 }
-.flex_cards_1{
-  width:80%;
-  display:flex;
- margin: 0 auto;
+.flex_cards_1 {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
 }
 .stats span {
   margin-right: 8px;
 }
 .class_navbar_conteiner button {
   display: flex !important;
-
 }
-#app > div > div.flex_cards > div.flex_card_i > div.card_cotainer_top > div > div:nth-child(3) > div{
+#app
+  > div
+  > div.flex_cards
+  > div.flex_card_i
+  > div.card_cotainer_top
+  > div
+  > div:nth-child(3)
+  > div {
   position: relative;
 }
 
-.stats p{
-  padding:0px;
-  font-weight:bold;
-  color:rgb(66, 66, 66);
-  margin:1px 0;
-  font-size:0.75rem;
+.stats p {
+  padding: 0px;
+  font-weight: bold;
+  color: rgb(66, 66, 66);
+  margin: 1px 0;
+  font-size: 0.75rem;
 }
-.class_navbar_conteiner{
+.class_navbar_conteiner {
   align-items: center;
   justify-content: space-between;
-  height:90px;
-
+  height: 90px;
 }
 /* Additional buttons, if any */
 .card-btn {
@@ -624,12 +722,17 @@ input {
   width: 100%;
   box-sizing: border-box;
 }
-.card_cotainer_top{
-  width:100%;
-  background: rgb(236,230,228);
-  padding-top:50px;
-  margin-top:-20px;
-background: linear-gradient(0deg, rgba(236,230,228,0.10127801120448177) 0%, rgba(0,215,255,0.3561799719887955) 250%);}
+.card_cotainer_top {
+  width: 100%;
+  background: rgb(236, 230, 228);
+  padding-top: 50px;
+  margin-top: -20px;
+  background: linear-gradient(
+    0deg,
+    rgba(236, 230, 228, 0.10127801120448177) 0%,
+    rgba(0, 215, 255, 0.3561799719887955) 250%
+  );
+}
 input:focus {
 }
 
@@ -707,21 +810,22 @@ input {
   position: relative;
   margin-bottom: 1rem;
   background-color: #ffffff;
-  width:80%;
-  border-radius:50px;
-  margin:0 auto;
+  width: 80%;
+  border-radius: 50px;
+  margin: 0 auto;
 }
-.class_navbar_conteiner{
-  display:flex !important;
-  align-items:center;
-  justify-content:space-between;
-  width:99%;
+.class_navbar_conteiner {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  width: 99%;
 }
 .search-box {
   display: flex;
   gap: 0.5rem;
   border-radius: 50px;
   height: 40px;
+  width:100%;
   z-index: 999995;
   position: relative;
   background: #fff;
@@ -735,16 +839,17 @@ input {
   border: none;
 
   height: 100%;
+  width: 100%;
 }
 
 /* .search-input:focus {
   border-color: #0366d6;
 } */
-.flex_card_i{
-  width:100%;
+.flex_card_i {
+  width: 100%;
 
   margin: 0 auto;
-  height:100%;
+  height: 100%;
 }
 .filters-btn {
   padding: 10px 15px;
@@ -775,13 +880,17 @@ input {
 
 /* Stile base per la dropdown */
 .filters-dropdown {
-  background-color: rgba(0, 0, 0, 0.809) ;/* Colore di sfondo simile a quello di GitHub */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.809
+  ); /* Colore di sfondo simile a quello di GitHub */
   border: 2px solid #ffffff; /* Colore del bordo */
   border-radius: 5px; /* Angoli arrotondati */
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
   padding: 15px;
-  width: 100%;
-  max-width: 97.5%; /* Puoi cambiare secondo le tue esigenze */
+  width: auto;
   margin: 10px 0;
   position: absolute;
   top: 20px;
@@ -816,9 +925,9 @@ input {
 .filters-dropdown .filter-species {
   margin-bottom: 15px;
 }
-.btn_btn_btn button{
-  border-radius:80px;
-  border:1px solid lightgrey;
+.btn_btn_btn button {
+  border-radius: 80px;
+  border: 1px solid lightgrey;
 }
 /* Stile per il selettore di ordinamento e il selettore della data */
 .filters-dropdown .sort-container,
@@ -827,16 +936,18 @@ input {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-}.filters-dropdown .sort-container[data-v-7cb41050], .filters-dropdown .date-range[data-v-7cb41050]
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0px !important;
+}
+.filters-dropdown .sort-container[data-v-7cb41050],
+.filters-dropdown .date-range[data-v-7cb41050] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0px !important;
 }
 
-.filters-dropdown select[data-v-7cb41050], .filters-dropdown input[type="date"][data-v-7cb41050]{
-  margin:0 !important;
+.filters-dropdown select[data-v-7cb41050],
+.filters-dropdown input[type="date"][data-v-7cb41050] {
+  margin: 0 !important;
 }
 .filters-dropdown select,
 .filters-dropdown input[type="date"] {
@@ -848,26 +959,33 @@ input {
   width: 100%; /* Per fare in modo che si adattino affianco */
   transition: border-color 0.2s;
 }
-#app > div > div.flex_cards > div.flex_card_i > div.search-container > div.filters-dropdown > div > div.date-range > input[type=date]:nth-child(2){
-  margin:0 0 0 10px !important;
+#app
+  > div
+  > div.flex_cards
+  > div.flex_card_i
+  > div.search-container
+  > div.filters-dropdown
+  > div
+  > div.date-range
+  > input[type="date"]:nth-child(2) {
+  margin: 0 0 0 10px !important;
 }
 .filters-dropdown select:hover,
 .filters-dropdown input[type="date"]:hover {
   border-color: #0366d6;
 }
-#app > div > div > div.navigation-buttons > div{
+#app > div > div > div.navigation-buttons > div {
   display: flex !important;
   align-items: center;
   /* justify-content: space-between; */
 }
-#app > div > div > div.flex_cards_1 > div{
-  width:100%;
+#app > div > div > div.flex_cards_1 > div {
+  width: 100%;
 }
 
-.stats{
-border-top:1px solid lightgrey;
-padding-top:0.3rem;
- 
+.stats {
+  border-top: 1px solid lightgrey;
+  padding-top: 0.3rem;
 }
 @media screen and (max-width: 768px) {
   .cards-container[data-v-7cb41050] {
@@ -877,26 +995,24 @@ padding-top:0.3rem;
     justify-content: space-between;
     width: 90%;
     margin: 0 auto;
-}
+  }
 
   .card {
     width: 100%;
   }
 
   .filters-dropdown {
-  border: 1px solid #e1e4e8; /* Colore del bordo */
-  border-radius: 5px; /* Angoli arrotondati */
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
-  padding: 15px;
-  width: 100%;
-  max-width: 89%; /* Puoi cambiare secondo le tue esigenze */
-  margin: 10px 0;
-  position: absolute;
-  top: 20px;
-  padding-top: 60px;
-}
-    /* Adatta il contenitore della navbar */
-    .class_navbar_conteiner {
+    border: 1px solid #e1e4e8; /* Colore del bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); /* Leggera ombra */
+    padding: 15px;
+    margin: 10px 0;
+    position: absolute;
+    top: 20px;
+    padding-top: 60px;
+  }
+  /* Adatta il contenitore della navbar */
+  .class_navbar_conteiner {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -922,7 +1038,7 @@ padding-top:0.3rem;
   /* Stile per l'immagine del logo */
   .class_navbar_conteiner > div:first-child > img {
     width: 50px; /* Modifica per adattare le dimensioni del logo */
-    height: auto; 
+    height: auto;
   }
 
   /* Stile per le tre stangatte (|||) */
@@ -930,9 +1046,9 @@ padding-top:0.3rem;
     font-size: 24px; /* Modifica per adattare le dimensioni delle stangatte */
     margin: 0; /* Rimuove margini aggiuntivi */
   }
-  .p_p{
-display:none;
-}
+  .p_p {
+    display: none;
+  }
   /* Stilizzazione della seconda sezione con il paginator */
   .class_navbar_conteiner > div:nth-child(2) {
     display: flex;
