@@ -197,10 +197,15 @@
               <div
                 style="
                   padding: 0px 12px;
-                  background-color: rgb(209, 241, 255);
+                  background-color: rgb(181, 228, 171);
                   border-radius: 98px;
-                  width: 80px;
-                  border: 1px solid rgb(158, 158, 158);
+                  width: 70px;
+                  display:flex;
+                  justify-content:center;
+                  align-items:center;
+                  margin: 8px 0;
+                  font-size:0.8rem;
+                  border: 1px solid rgb(228, 228, 228);
                 "
               >
                 {{ item.status }}
@@ -269,19 +274,20 @@ function isSortKey(key: string): key is SortKeys {
 export default {
   name: "SearchComponent",
   setup() {
-    const searchQuery = ref("");
-    const selectedCategory = ref("");
-    const sortOption = ref<SortKeys>("views");
-    const selectedStatus = ref("");
-    const selectedSpecies = ref("");
-    const data = ref<DataItem[]>([]);
-    const currentPage = ref(1);
-    const itemsPerPage = ref(6);
-    const startDate = ref("2022-01-01");
-    const endDate = ref("2023-12-31");
-    const showFilterDropdown = ref(false);
-    const searchMethod = ref("default");
-    const isRecording = ref(false);
+    const searchQuery = ref(""); // Query di ricerca inserita dall'utente
+    const selectedCategory = ref(""); // Categoria selezionata per filtrare i risultati
+    const sortOption = ref<SortKeys>("views"); // Opzione per ordinare i risultati
+    const selectedStatus = ref(""); // Stato selezionato per filtrare i risultati
+    const selectedSpecies = ref(""); // Specie selezionata per filtrare i risultati
+    const data = ref<DataItem[]>([]); // Dati recuperati dal backend
+    const currentPage = ref(1); // Pagina corrente per la paginazione
+    const itemsPerPage = ref(6); // Numero di elementi per pagina
+    const startDate = ref("2022-01-01"); // Data di inizio per filtrare i risultati
+    const endDate = ref("2023-12-31"); // Data di fine per filtrare i risultati
+    const showFilterDropdown = ref(false); // Mostra o nasconde il menu a discesa dei filtri
+    const searchMethod = ref("default"); // Metodo di ricerca selezionato
+    const isRecording = ref(false); // Indica se la registrazione vocale è attiva
+
 
     // Fetch data from backend when component is mounted
     const fetchData = async () => {
@@ -662,6 +668,8 @@ body {
 .card-title {
   margin: 0;
   font-weight: bold;
+  color:#003879;
+  font-size: 1.2rem;
 }
 
 /* For icons or thumbnails */
@@ -677,6 +685,8 @@ body {
 .card-description {
   margin-top: 10px;
   font-size: 0.8em;
+  max-height:50px;
+  overflow:hidden;
   color: #586069;
 }
 
@@ -684,6 +694,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width:1500px;
   margin: 0 auto;
 }
 .flex_cards_1 {
