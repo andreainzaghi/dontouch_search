@@ -71,13 +71,14 @@
               FILTERS
             </button>
             <button class="search-btn" @click="startSpeechRecognition">
-              <svg
-                width="24px"
-                height="24px"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+  <svg
+    :class="{ 'recording': isRecording }"
+    width="24px"
+    height="24px"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
                 <path
                   d="M19 10V12C19 15.866 15.866 19 12 19M5 10V12C5 15.866 8.13401 19 12 19M12 19V22M8 22H16M12 15C10.3431 15 9 13.6569 9 12V5C9 3.34315 10.3431 2 12 2C13.6569 2 15 3.34315 15 5V12C15 13.6569 13.6569 15 12 15Z"
                   stroke="#000000"
@@ -268,6 +269,7 @@ export default {
     const endDate = ref("2023-12-31");
     const showFilterDropdown = ref(false);
     const searchMethod = ref("default");
+    const isRecording = ref(false);
 
     // Fetch data from backend when component is mounted
     const fetchData = async () => {
@@ -406,22 +408,31 @@ export default {
       return [...new Set(data.value.map((item) => item.species))];
     });
     const startSpeechRecognition = () => {
-      let SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) {
-        console.error("SpeechRecognition API not supported in this browser.");
-        return;
-      }
+  let SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    console.error("SpeechRecognition API not supported in this browser.");
+    return;
+  }
 
-      const recognition = new SpeechRecognition();
-      recognition.lang = "it-IT";
+  const recognition = new SpeechRecognition();
+  recognition.lang = "it-IT";
 
-      recognition.onresult = (event: any) => {
-        searchQuery.value = event.results[0][0].transcript;
-      };
+  recognition.onresult = (event: any) => {
+    searchQuery.value = event.results[0][0].transcript;
+  };
 
-      recognition.start();
-    };
+  recognition.onstart = () => {
+    isRecording.value = true;
+  };
+
+  recognition.onend = () => {
+    isRecording.value = false;
+  };
+
+  recognition.start();
+};
+
 
     const uniqueCategories = computed(() => {
       return [...new Set(data.value.map((item) => item.category))];
@@ -509,6 +520,8 @@ export default {
       searchMethod,
       search,
       showFilterDropdown,
+      isRecording,
+
     };
   },
 };
@@ -526,6 +539,17 @@ export default {
 .card:hover {
   background-color: #e9e9e9;
 }
+
+@keyframes flashing {
+  0% { fill: #000000; }
+  50% { fill: #FF0000; }
+  100% { fill: #000000; }
+}
+
+.recording {
+  animation: flashing 1s infinite;
+}
+
 .stats {
   margin-top: 8px;
   font-size: 0.85em;
@@ -894,7 +918,7 @@ input {
   margin: 10px 0;
   position: absolute;
   top: 20px;
-  padding-top: 60px;
+  padding-top: 30px;
 }
 
 /* Stile per i bottoni */
@@ -1009,7 +1033,7 @@ input {
     margin: 10px 0;
     position: absolute;
     top: 20px;
-    padding-top: 60px;
+    padding-top: 30px;
   }
   /* Adatta il contenitore della navbar */
   .class_navbar_conteiner {
