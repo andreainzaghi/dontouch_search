@@ -11,9 +11,8 @@ interface DataItem {
     status: string;
     title: string;
     views: number;
-  }
-  
-  type SortKeys = "views" | "likes" | "comments" | "datePublished";
-  
-  export { DataItem, SortKeys };
-  
+}
+
+type SortKeys = "views" | "likes" | "comments" | "datePublished";
+
+export { DataItem, SortKeys };

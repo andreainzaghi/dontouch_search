@@ -1,8 +1,7 @@
 
 import { defineComponent } from 'vue'
 import { ref, computed, onMounted, watch } from 'vue';
-// import { DataItem } from '../../types';  // Aggiorna il percorso se necessario
-// import { isSortKey } from '../../utils';  // Aggiorna il percorso se necessario
+import { DataItem, SortKeys } from '../../types';  // Assicurati che il percorso sia corretto
 import { data as fetchedData, fetchData } from '../../dataFetch';
 
 /* eslint-disable no-unused-vars */
@@ -12,28 +11,12 @@ declare global {
     webkitSpeechRecognition: any;
   }
 }
-/* eslint-enable no-unused-vars */
-interface DataItem {
-  category: string;
-  comments: number;
-  datePublished: string;
-  description: string;
-  id: number;
-  img: string;
-  likes: number;
-  species: string;
-  status: string;
-  title: string;
-  views: number;
-}
-
-type SortKeys = "views" | "likes" | "comments" | "datePublished";
 
 function isSortKey(key: string): key is SortKeys {
   return ["views", "likes", "comments", "datePublished"].includes(key);
 }
 
-export default  defineComponent({
+export default defineComponent({
   name: "SearchComponent",
   setup() {
     const searchQuery = ref(""); // Query di ricerca inserita dall'utente
@@ -49,25 +32,6 @@ export default  defineComponent({
     const showFilterDropdown = ref(false); // Mostra o nasconde il menu a discesa dei filtri
     const searchMethod = ref("default"); // Metodo di ricerca selezionato
     const isRecording = ref(false); // Indica se la registrazione vocale è attiva
-
-
-    // Fetch data from backend when component is mounted
-    // const fetchData = async () => {
-    //   try {
-      //   const response = await fetch(
-      //     `http://127.0.0.1:5000/data?page=${currentPage.value}&items_per_page=${itemsPerPage.value}&search_query=${searchQuery.value}&selected_category=${selectedCategory.value}&sort_option=${sortOption.value}`
-      //   );
-
-      //   if (!response.ok) {
-      //     throw new Error("Network response was not ok");
-      //   }
-
-      //   const jsonData = await response.json();
-      //   fetchedData.value = jsonData;
-      // } catch (error) {
-      //   console.error("There was a problem with the fetch operation:", error);
-      // }
-    // };
 
     watch(
       [
@@ -102,7 +66,7 @@ export default  defineComponent({
         sortOption.value
       );
     });
-    
+
 
     const goBack = () => {
       if (currentPage.value > 1) {
@@ -115,7 +79,7 @@ export default  defineComponent({
         currentPage.value += 1;
       }
     };
- 
+
     const minDate = computed(() => {
       return fetchedData.value.reduce((acc, item) => {
         return item.datePublished < acc ? item.datePublished : acc;
@@ -136,30 +100,30 @@ export default  defineComponent({
       return [...new Set(fetchedData.value.map((item) => item.species))];
     });
     const startSpeechRecognition = () => {
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) {
-    console.error("SpeechRecognition API not supported in this browser.");
-    return;
-  }
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        console.error("SpeechRecognition API not supported in this browser.");
+        return;
+      }
 
-  const recognition = new SpeechRecognition();
-  recognition.lang = "it-IT";
+      const recognition = new SpeechRecognition();
+      recognition.lang = "it-IT";
 
-  recognition.onresult = (event: any) => {
-    searchQuery.value = event.results[0][0].transcript;
-  };
+      recognition.onresult = (event: any) => {
+        searchQuery.value = event.results[0][0].transcript;
+      };
 
-  recognition.onstart = () => {
-    isRecording.value = true;
-  };
+      recognition.onstart = () => {
+        isRecording.value = true;
+      };
 
-  recognition.onend = () => {
-    isRecording.value = false;
-  };
+      recognition.onend = () => {
+        isRecording.value = false;
+      };
 
-  recognition.start();
-};
+      recognition.start();
+    };
 
 
     const uniqueCategories = computed(() => {
