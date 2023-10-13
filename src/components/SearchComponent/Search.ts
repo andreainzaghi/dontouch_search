@@ -99,6 +99,7 @@ export default defineComponent({
     const uniqueSpecies = computed(() => {
       return [...new Set(fetchedData.value.map((item) => item.species))];
     });
+
     const startSpeechRecognition = () => {
       const SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;

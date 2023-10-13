@@ -56,7 +56,7 @@ export const fetchData = async (
         // Poiché i dati sono ora locali, non è più necessario effettuare una chiamata fetch
         // Tuttavia, potresti voler filtrare/ordinare i dati in base ai parametri forniti
         const filteredData = jsonData.filter(item => {
-            // Aggiungi qui la logica per filtrare i dati in base ai parametri forniti
+           
             return true;  // Ritorna true per includere l'elemento, false per escluderlo
         });
 
