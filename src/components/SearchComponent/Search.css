@@ -577,6 +577,79 @@ input {
 
 background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
 }
+
+
+/* ////DROPDOWN§§§ */
+
+.p_p {
+  cursor: pointer;
+}
+
+
+.dropdown-containeree {
+  transform: translateX(0%); /* sposta l'aside fuori dallo schermo */
+  transition: transform 0.3s ease-in-out; /* animazione */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 60%; /* Larghezza predefinita per schermi grandi */
+  background-color: #fff;
+  z-index: 999999999999;
+  overflow-y: scroll;
+}
+
+/* Stili per l'aside quando è visibile */
+.dropdown-containeree.show {
+  transform: translateX(0); /* mostra l'aside */
+}
+
+/* Stili per il pulsante di chiusura */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+.dropdown a:hover {
+  background-color: #f7f7f7;
+}
+.dropdown-containeree {
+  transform: translateX(100%); /* sposta l'aside fuori dallo schermo */
+  transition: transform 0.3s ease-in-out; /* animazione */
+}
+
+.dropdown-containeree.show {
+  transform: translateX(0); /* mostra l'aside */
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 @media screen and (max-width: 1100px) {
   .card {
     width: 49%;
@@ -584,7 +657,12 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
     box-sizing: border-box;
     overflow: hidden;
     color: #24292e;
+    
   }
+  .dropdown-containeree {
+    width: 100%; /* Occupa l'intera larghezza dello schermo */
+  }
+  
 }@media screen and (max-width: 768px) {
 
   .cards-container[data-v-7cb41050] {

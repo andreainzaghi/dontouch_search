@@ -1,27 +1,13 @@
 <template>
   <div>
-
-    <!-- <SearchStatsComponent
-      v-bind="$refs.searchComponentRef"
-    />    -->
-    <SearchComponent />
-    <!-- <HelloWorld /> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
-import SearchComponent from './components/SearchComponent/SearchComponent.vue';
-// import SearchStatsComponent from './components/SearchStatsComponent.vue';
-// import HelloWorld from './components/HelloWorld.vue';
-
+// Poiché stai usando i componenti solo attraverso il router, non hai bisogno di importarli qui.
 export default {
-  name: 'App',
-  components: {
-// HelloWorld,
-    SearchComponent,
-    // SearchStatsComponent
-  }
+  name: 'App'
 }
 </script>
 

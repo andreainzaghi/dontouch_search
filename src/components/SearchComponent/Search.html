@@ -1,7 +1,14 @@
 <div class="flex_cards">
-  <div class="overlay_black" v-show="showFilterDropdown"></div>
-
-
+  <div class="overlay_black" v-show="showFilterDropdown || showDropdown"></div>
+  <!-- //ASIDE -->
+  <div :class="{ 'dropdown-containeree': true, 'show': showDropdown }">
+    <router-link to="/draw" class="btn btn-primary">Draw</router-link>
+    <button @click="closeDropdown" class="close-btn">X</button>
+    <!-- <Documentazione /> -->
+  
+  </div>
+  
+  
   <!-- //NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR//NAVBARNAVBAR -->
 
   <div class="flex_cards_1">
@@ -25,8 +32,10 @@
             </svg>
           </button>
         </div>
-        <p class="p_p">|||</p>
-      </div>
+        <button @click="showDropdown = !showDropdown" class="p_p">|||</button>
+      
+        
+            </div>
     </div>
   </div>
 
@@ -39,7 +48,7 @@
     <!-- //SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH -->
     <div class="search-container">
       <!-- Search Box -->
-      <div class="search-box">
+      <div class="search-box" v-show="!showDropdown">
         <input class="search-input" v-model="searchQuery" placeholder="Search a character" />
 
         <div class="input_btn_search">

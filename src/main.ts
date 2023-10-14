@@ -1,28 +1,10 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
+import lazyDirective from './lazyDirective';  // importa la direttiva da lazyDirective.ts
+import router from './router';
 
 const app = createApp(App);
-
-app.directive('lazy', {
-  mounted(el) {
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const img = entry.target;
-            const src = img.getAttribute('data-lazy');
-            
-            if (src) {  // verifica che src non sia null
-              img.setAttribute('src', src);
-              img.classList.add('loaded');  // opzionale: aggiungi una classe una volta caricato
-              observer.disconnect();
-            }
-          }
-          
-      });
-    });
-
-    observer.observe(el);
-  }
-});
-
+app.directive('lazy', lazyDirective); 
+app.use(router);
+console.log(app) // utilizza la direttiva importata
 app.mount('#app');
