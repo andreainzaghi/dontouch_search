@@ -167,6 +167,7 @@ body {
 .flex_cards_1 {
   width: 80%;
   display: flex;
+  padding:1rem 0;
   margin: 0 auto;
 }
 
@@ -365,6 +366,8 @@ input {
 .search-box {
   display: flex;
   gap: 0.5rem;
+  margin-top:0.8rem !important;
+
   border-radius: 50px;
   height: 40px;
   width: 100%;
@@ -669,7 +672,9 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
-
+#fdsa{
+  display:none !important;
+}
 @media screen and (max-width: 1100px) {
   .card {
     width: 49%;
@@ -684,14 +689,20 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
   }
   
 }@media screen and (max-width: 768px) {
-
-  .cards-container[data-v-7cb41050] {
+  #fdsa{
+    display:block !important;
+  }
+  .cards-container{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
-    margin: 0 auto;
+    width: 90%;
+    margin: 50px  auto ;
+  }
+
+  .hidden_opacity{
+    display:none;
   }
   
   .card {
@@ -713,13 +724,7 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
   }
 
   /* Adatta il contenitore della navbar */
-  .class_navbar_conteiner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    /* Aggiunge un po' di spazio attorno */
-  }
+ 
 
   /* Stilizzazione della prima sezione con i tre elementi */
   .class_navbar_conteiner>div:first-child {
@@ -729,18 +734,11 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
     /* Distribuisce gli elementi uniformemente */
     align-items: center;
     /* Allinea gli elementi verticalmente al centro */
-    margin-bottom: 10px;
+    margin: 1rem 0;
     /* Spazio tra la prima e la seconda sezione */
   }
 
   /* Posiziona l'icona della ricerca di FontAwesome */
-  .class_navbar_conteiner div:first-child:before {
-    content: "\f002";
-    /* Icona di ricerca di FontAwesome */
-    font-family: FontAwesome;
-    font-size: 24px;
-    /* Aumenta o riduci per adattare le dimensioni dell'icona */
-  }
 
   /* Stile per l'immagine del logo */
   .class_navbar_conteiner>div:first-child>img {
@@ -765,14 +763,27 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
         rgba(236, 230, 228, 0.10127801120448177) 0%,
         rgba(0, 215, 255, 0.3561799719887955) 250%);
   }
-  .p_p {
-    display: none;
-  }
+  .class_navbar_conteiner {
+    flex-direction: column;  /* Rende gli elementi in colonna */
+}
 
+.class_navbar_conteiner img {
+    order: 1;  /* Primo elemento */
+}
+
+.btn_btn_btn {
+  margin-bottom: 1rem;
+    order: 3;  /* Terzo elemento */
+}
+
+.p_p {
+    order: 2;  /* Secondo elemento */
+}
   /* Stilizzazione della seconda sezione con il paginator */
   .class_navbar_conteiner>div:nth-child(2) {
     display: flex;
     align-items: center;
+    z-index: 9999;
     /* Allinea gli elementi verticalmente al centro */
   }
 
@@ -823,4 +834,6 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
   .filters-dropdown input[type="date"] {
     margin-bottom: 10px; /* Aggiunge un po' di spazio tra select e input data */
   }
+  #asdf{display:none !important};
+ 
 }

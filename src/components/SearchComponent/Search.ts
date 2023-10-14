@@ -65,6 +65,8 @@ export default defineComponent({
     // Indica se la registrazione vocale è attiva
     const isRecording = ref(false);
 
+    const hideSearchBox = ref(true);
+
     const showDropdown = ref(false); // Utilizza 'ref' per le variabili reattive
 
 
@@ -222,6 +224,7 @@ export default defineComponent({
       return fetchedData.value.length;
     });
 
+ 
     // Calcola il numero totale di pagine
     const totalPages = computed(() => {
       return Math.ceil(sortedAndFilteredData.value.length / itemsPerPage.value);
@@ -239,7 +242,7 @@ export default defineComponent({
       console.log(showDropdown.value)
   };
   
-    
+
     // Calcola se il pulsante "Indietro" dovrebbe essere disabilitato
     const isBackDisabled = computed(() => currentPage.value === 1);
 
@@ -272,12 +275,15 @@ export default defineComponent({
       paginatedData,
       goBack,
       goForward,
+      hideSearchBox,
       isBackDisabled,
       isForwardDisabled,
       searchMethod,
       showFilterDropdown,
       isRecording,
-      showDropdown
+      showDropdown,
+       // per default, la search box è nascosta
+
       
     };
   },

@@ -15,9 +15,12 @@
 
   <div class="flex_cards_1">
     <div class="navigation-buttons">
-      <div class="class_navbar_conteiner">
-        <img  style="width:120px" src="../../assets/img/logo_1.png" alt="" />
-        <div style="display: flex; align-items: center" class="btn_btn_btn">
+      <div class="class_navbar_conteiner" >
+        <div class="top-container">
+          <img  style="width:120px" src="../../assets/img/logo_1.png" alt="" />
+          <button @click="showDropdown = !showDropdown" class="p_p" id="fdsa">|||</button>
+      </div>
+      <div style="display: flex; align-items: center" class="btn_btn_btn">
           <button @click="goBack" :disabled="isBackDisabled">
             <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M6 12H18M6 12L11 7M6 12L11 17" stroke="#000000" stroke-width="2" stroke-linecap="round"
@@ -25,7 +28,7 @@
             </svg>
           </button>
           <p style="padding: 0 1rem ;font-family: 'Young Serif', serif;">
-            Page {{ currentPage }} of {{ Math.ceil(totalImages / 6) }}
+              Page {{ currentPage }} of {{ Math.ceil(totalImages / 6) }}
           </p>
           <button @click="goForward" :disabled="isForwardDisabled">
             <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +37,7 @@
             </svg>
           </button>
         </div>
-        <button @click="showDropdown = !showDropdown" class="p_p">|||</button>
+        <button @click="showDropdown = !showDropdown" class="p_p " id="asdf">|||</button>
       
         
             </div>
@@ -48,10 +51,10 @@
   <div class="flex_card_i">
 
     <!-- //SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH//SEARCH -->
-    <div class="search-container">
+    <div class="search-container ">
       <!-- Search Box -->
-      <div class="search-box" v-show="!showDropdown">
-        <input class="search-input" v-model="searchQuery" placeholder="Search a character" />
+      <div class="search-box"  v-show="showDropdown || hideSearchBox">
+        <input class="search-input " v-model="searchQuery" placeholder="Search a character" />
 
         <div class="input_btn_search">
 
