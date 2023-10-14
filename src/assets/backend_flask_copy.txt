@@ -1,0 +1,51 @@
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+import json
+import base64
+import torch
+from PIL import Image
+from io import BytesIO
+
+# Model setup
+from diffusers import StableDiffusionImg2ImgPipeline
+
+device = "cuda"
+model_id_or_path = "runwayml/stable-diffusion-v1-5"
+pipe = StableDiffusionImg2ImgPipeline.from_pretrained(model_id_or_path, torch_dtype=torch.float16)
+pipe = pipe.to(device)
+
+# Flask setup
+app = Flask(__name__)
+CORS(app)
+
+# Load data from data.json file (if required)
+with open('data.json', 'r') as file:
+    data = json.load(file)
+
+@app.route('/data', methods=['GET'])
+def get_data():
+    return jsonify(data)
+
+@app.route('/image', methods=['POST'])
+def receive_image():
+    try:
+        # Receive image from frontend
+        data = request.json
+        image_data = data['image'].split(',')[1]
+        prompt = data['prompt']  # Get the prompt from the request data
+        image_bytes = BytesIO(base64.b64decode(image_data))
+        init_image = Image.open(image_bytes).convert("RGB")
+        init_image = init_image.resize((768, 512))
+        images = pipe(prompt=prompt, image=init_image, strength=0.75, guidance_scale=7.5).images
+        
+        img_byte_array = BytesIO()
+        images[0].save(img_byte_array, format="PNG")
+        img_base64 = base64.b64encode(img_byte_array.getvalue()).decode()
+
+        return jsonify({'message': 'Image processed successfully!', 'imageBase64': f"data:image/png;base64,{img_base64}"})
+    
+    except Exception as e:
+        return jsonify({'message': f'Error: {str(e)}'}), 500
+
+if __name__ == "__main__":
+    app.run(debug=True)
