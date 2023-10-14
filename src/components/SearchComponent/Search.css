@@ -698,7 +698,7 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
     flex-direction: column;
     justify-content: space-between;
     width: 90%;
-    margin: 50px  auto ;
+    margin: 8px  auto ;
   }
 
   .hidden_opacity{
