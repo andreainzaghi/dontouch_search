@@ -167,7 +167,7 @@ body {
 .flex_cards_1 {
   width: 80%;
   display: flex;
-  padding:1rem 0;
+  padding: 0rem 0;
   margin: 0 auto;
 }
 
@@ -270,6 +270,7 @@ select:hover {
 .shuffle-move {
   transition: transform 1s;
 }
+
 .p_p {
   transform: rotate(90deg) !important;
   transform: scale(1.1);
@@ -366,7 +367,7 @@ input {
 .search-box {
   display: flex;
   gap: 0.5rem;
-  margin-top:0.8rem !important;
+  margin-top: 0.8rem !important;
 
   border-radius: 50px;
   height: 40px;
@@ -422,9 +423,10 @@ input {
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
 }
-#app>div>div>div.flex_card_i>div.search-container>div.filters-dropdown>div>div.sort-container>select{
-  margin:0 !important;
-  padding:6px !important;
+
+#app>div>div>div.flex_card_i>div.search-container>div.filters-dropdown>div>div.sort-container>select {
+  margin: 0 !important;
+  padding: 6px !important;
 }
 
 #app>div>div>div.flex_card_i>div.search-container>div.filters-dropdown>div>div.sort-container>select {
@@ -474,8 +476,9 @@ input {
 
 /* Stile per bottoni attivi */
 .filters-dropdown button.active {
-  background: rgb(16,158,23);
-  background: linear-gradient(148deg, rgba(16,158,23,1) 0%, rgba(31,179,48,0.7819502801120448) 100%);  color: #ffffff;
+  background: rgb(16, 158, 23);
+  background: linear-gradient(148deg, rgba(16, 158, 23, 1) 0%, rgba(31, 179, 48, 0.7819502801120448) 100%);
+  color: #ffffff;
 }
 
 .card_overlay_sfumato {
@@ -559,26 +562,29 @@ input {
   border-top: 1px solid lightgrey;
   padding-top: 0.3rem;
 }
-.sort-container{
+
+.sort-container {
   width: 100%;
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.sort-container select,.date-range input[type="date"]{
+.sort-container select,
+.date-range input[type="date"] {
   width: 100%;
   margin: 5px 0 !important;
 }
-.sort-container select{
+
+.sort-container select {
   margin: 0 !important;
 }
 
-.bg_gradient_color_btn{
+.bg_gradient_color_btn {
   background: rgb(0, 0, 0);
   color: #fff !important;
 
-background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
+  background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30, 32, 40, 1) 80%);
 }
 
 
@@ -590,13 +596,16 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
 
 
 .dropdown-containeree {
-  transform: translateX(0%); /* sposta l'aside fuori dallo schermo */
-  transition: transform 0.3s ease-in-out; /* animazione */
+  transform: translateX(0%);
+  /* sposta l'aside fuori dallo schermo */
+  transition: transform 0.3s ease-in-out;
+  /* animazione */
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 60%; /* Larghezza predefinita per schermi grandi */
+  width: 60%;
+  /* Larghezza predefinita per schermi grandi */
   background-color: #fff;
   z-index: 999999999999;
   overflow-y: scroll;
@@ -604,13 +613,14 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
 
 /* Stili per l'aside quando è visibile */
 .dropdown-containeree.show {
-  transform: translateX(0); /* mostra l'aside */
+  transform: translateX(0);
+  /* mostra l'aside */
 }
 
 /* Stili per il pulsante di chiusura */
 .close-btn {
   position: absolute;
-  top: 10px;
+  top: 32px;
   right: 10px;
   background: #fff;
   border: none;
@@ -621,38 +631,47 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
   height: 30px;
   text-align: center;
 }
+
 .dropdown a:hover {
   background-color: #f7f7f7;
 }
+
 .dropdown-containeree {
-  transform: translateX(100%); /* sposta l'aside fuori dallo schermo */
-  transition: transform 0.3s ease-in-out; /* animazione */
+  transform: translateX(100%);
+  /* sposta l'aside fuori dallo schermo */
+  transition: transform 0.3s ease-in-out;
+  /* animazione */
 }
-.flexfòlex{
+
+.flexfòlex {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.flexfòlex{
-  position:fixed !important;
-  top:0;
-  left:0;
-  width:100%;
+
+  position: fixed !important;
+  top: 0;
+  left: 5%;
+  width: 90%;
   
+
 }
+
 .dropdown-containeree.show {
-  transform: translateX(0); /* mostra l'aside */
+  transform: translateX(0);
+  /* mostra l'aside */
 }
-.btn-primary{
+
+.btn-primary {
   background-color: #0366d6;
   color: #fff;
   border-radius: 10px;
   border: 1px solid #0366d6;
   padding: 5px 15px;
-  margin-top:1rem;
+  margin-top: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 /* width */
 ::-webkit-scrollbar {
   width: 0px;
@@ -660,21 +679,23 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
-#fdsa{
-  display:none !important;
+
+#fdsa {
+  display: none !important;
 }
+
 @media screen and (max-width: 1100px) {
   .card {
     width: 49%;
@@ -682,29 +703,34 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
     box-sizing: border-box;
     overflow: hidden;
     color: #24292e;
-    
+
   }
+
   .dropdown-containeree {
-    width: 100%; /* Occupa l'intera larghezza dello schermo */
+    width: 100%;
+    /* Occupa l'intera larghezza dello schermo */
   }
-  
-}@media screen and (max-width: 768px) {
-  #fdsa{
-    display:block !important;
+
+}
+
+@media screen and (max-width: 768px) {
+  #fdsa {
+    display: block !important;
   }
-  .cards-container{
+
+  .cards-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
     width: 90%;
-    margin: 8px  auto ;
+    margin: 8px auto;
   }
 
-  .hidden_opacity{
-    display:none;
+  .hidden_opacity {
+    display: none;
   }
-  
+
   .card {
     width: 100%;
   }
@@ -724,7 +750,7 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
   }
 
   /* Adatta il contenitore della navbar */
- 
+
 
   /* Stilizzazione della prima sezione con i tre elementi */
   .class_navbar_conteiner>div:first-child {
@@ -754,6 +780,7 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
     margin: 0;
     /* Rimuove margini aggiuntivi */
   }
+
   .card_cotainer_top {
     width: 100%;
     background: rgb(236, 230, 228);
@@ -763,22 +790,28 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
         rgba(236, 230, 228, 0.10127801120448177) 0%,
         rgba(0, 215, 255, 0.3561799719887955) 250%);
   }
+
   .class_navbar_conteiner {
-    flex-direction: column;  /* Rende gli elementi in colonna */
-}
+    flex-direction: column;
+    /* Rende gli elementi in colonna */
+  }
 
-.class_navbar_conteiner img {
-    order: 1;  /* Primo elemento */
-}
+  .class_navbar_conteiner img {
+    order: 1;
+    /* Primo elemento */
+  }
 
-.btn_btn_btn {
-  margin-bottom: 1rem;
-    order: 3;  /* Terzo elemento */
-}
+  .btn_btn_btn {
+    margin-bottom: 1rem;
+    order: 3;
+    /* Terzo elemento */
+  }
 
-.p_p {
-    order: 2;  /* Secondo elemento */
-}
+  .p_p {
+    order: 2;
+    /* Secondo elemento */
+  }
+
   /* Stilizzazione della seconda sezione con il paginator */
   .class_navbar_conteiner>div:nth-child(2) {
     display: flex;
@@ -802,6 +835,7 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
     max-height: 70vh !important;
     overflow-y: scroll;
   }
+
   .card {
     width: 100%;
     margin: 0.8rem auto;
@@ -812,8 +846,10 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
 
   /* Stile per i bottoni dei filtri */
   .filters-dropdown button {
-    width: 100%; /* Imposta la larghezza al 100% */
-    margin-bottom: 5px; /* Aggiunge un po' di spazio tra i bottoni */
+    width: 100%;
+    /* Imposta la larghezza al 100% */
+    margin-bottom: 5px;
+    /* Aggiunge un po' di spazio tra i bottoni */
   }
 
   /* Stile per i contenitori dei filtri */
@@ -832,8 +868,20 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
   /* Stile per il selettore select e la data */
   .filters-dropdown select,
   .filters-dropdown input[type="date"] {
-    margin-bottom: 10px; /* Aggiunge un po' di spazio tra select e input data */
+    margin-bottom: 10px;
+    /* Aggiunge un po' di spazio tra select e input data */
   }
-  #asdf{display:none !important};
- 
+
+  #asdf {
+    display: none !important
+  }
+
+  #app > div > div > div.dropdown-containeree.show > div.documentation-container{
+    margin-top:5.9rem !important;
+  }
+
+  .flex_cards_1 {
+    padding: 1rem 0;
+  }
+  
 }

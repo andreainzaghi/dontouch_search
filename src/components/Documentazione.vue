@@ -563,5 +563,6 @@ export default class HelloWorld extends Vue {
 <style scoped>
 .documentation-container {
   overflow: scroll;
+  
 }
 </style>
