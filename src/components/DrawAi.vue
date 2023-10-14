@@ -1,11 +1,16 @@
 <template>
-    <div>
+    <div class="draw_container">
       <div class="controls">
+       <div class="despai">
         <input type="color" v-model="color" title="Scegli colore" />
         <button @click="clearCanvas">Cancella</button>
         <button @click="sendImage">Invia</button>
+       
+       </div>
+       <div>
         <input type="text" v-model="prompt" placeholder="Enter your prompt here">
 
+       </div>
       </div>
       <div class="canvas-container">
         <canvas ref="drawingCanvas" />
@@ -102,7 +107,9 @@ export default defineComponent({
     font-family: 'Arial', sans-serif;
     background-color: #f7f9fc;
   }
-
+.despai{
+    display:flex;align-items:center;
+}
   /* Controls Styles */
   .controls {
     display: flex;
@@ -114,7 +121,9 @@ export default defineComponent({
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
   }
-
+.draw_container{
+    width:80%;margin:0 auto;
+}
   .controls input[type="color"] {
     width: 40px;
     height: 40px;
@@ -122,7 +131,9 @@ export default defineComponent({
     cursor: pointer;
     border-radius: 50%;
   }
-
+  canvas, .image_from_backend{
+  margin:0.5rem;
+  }
   .controls button {
     padding: 10px 20px;
     border: none;
@@ -146,19 +157,21 @@ export default defineComponent({
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 1rem 0;
-    width: 98%;  /* increased width to accommodate padding */
+    width: 100%;  /* increased width to accommodate padding */
     height: 512px; /* increased height to accommodate padding */
   }
-
+button{
+    margin:0 0.5rem;
+}
   .image_from_backend{
-    WIDTH:50%;
-    border: 2px solid #007bff;
+    width:50%;
+    border: 1px solid #007bff;
 
     height:100%;
   }
 
   canvas {
-    border: 2px solid #007bff;
+    border: 1px solid #007bff;
     border-radius: 5px;
     width:50%;
     height:100%;
@@ -166,19 +179,30 @@ export default defineComponent({
   }
 
   @media screen and (max-width: 768px) {
+.despai{
+    justify-content: space-evenly
+}
+    .controls {
+    flex-direction: column;
+    width:100%;
+    justify-content: space-between ;
+  }
     .canvas-container {
         flex-direction: column;
         height:85vh;
-        }
+        width:100%;
+        margin-left: 10px;        }
     
-  canvas ,.image_from_backend{
+  canvas, .image_from_backend{
     border: 2px solid #007bff;
     border-radius: 5px;
-    width:94%;
+    width:95%;
     margin:0 auto;
     height:50%;
   }
-
+  .draw_container{
+    width:100%;margin:0 auto;
+}
   canvas{
     margin-bottom:1rem;
   }
