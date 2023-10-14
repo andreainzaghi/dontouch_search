@@ -115,6 +115,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
     gap: 20px;
+  
     padding: 10px;
     background-color: #fff;
     border-radius: 10px;

@@ -625,11 +625,31 @@ background: linear-gradient(148deg, rgb(33, 39, 34) 0%, rgba(30,32,40,1) 80%);
   transform: translateX(100%); /* sposta l'aside fuori dallo schermo */
   transition: transform 0.3s ease-in-out; /* animazione */
 }
-
+.flexfòlex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flexfòlex{
+  position:fixed !important;
+  top:0;
+  left:0;
+  width:100%;
+  
+}
 .dropdown-containeree.show {
   transform: translateX(0); /* mostra l'aside */
 }
-
+.btn-primary{
+  background-color: #0366d6;
+  color: #fff;
+  border-radius: 10px;
+  border: 1px solid #0366d6;
+  padding: 5px 15px;
+  margin-top:1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 0px;

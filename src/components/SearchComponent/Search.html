@@ -2,8 +2,10 @@
   <div class="overlay_black" v-show="showFilterDropdown || showDropdown"></div>
   <!-- //ASIDE -->
   <div :class="{ 'dropdown-containeree': true, 'show': showDropdown }">
-    <router-link to="/draw" class="btn btn-primary">Draw</router-link>
+   <div class="flexfòlex">
+    <router-link to="/draw" class="btn btn-primary">DrawAI <b style="color:rgb(231, 231, 231);font-size:0.8rem;font-weight:100;">[Vue3 / Python] Ai platform using Image2Image GAN</b></router-link>
     <button @click="closeDropdown" class="close-btn">X</button>
+   </div>
     <Documentazione />
   
   </div>
