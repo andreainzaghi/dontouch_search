@@ -16,3 +16,8 @@ interface DataItem {
 type SortKeys = "views" | "likes" | "comments" | "datePublished";
 
 export { DataItem, SortKeys };
+
+
+export function isSortKey(key: string): key is SortKeys {
+    return ["views", "likes", "comments", "datePublished"].includes(key);
+  }

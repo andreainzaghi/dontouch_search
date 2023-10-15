@@ -5,19 +5,35 @@
         <input type="color" v-model="color" title="Scegli colore" />
         <button @click="clearCanvas">Cancella</button>
         <button @click="sendImage">Invia</button>
-       
        </div>
        <div>
         <input type="text" v-model="prompt" placeholder="Enter your prompt here">
-
+       </div>
+       <div>
+        <label for="lineWidth">Line Thickness:</label>
+        <input type="range" id="lineWidth" v-model="lineWidth" min="1" max="20">
        </div>
       </div>
+
       <div class="canvas-container">
         <canvas ref="drawingCanvas" />
         <div class="image_from_backend">
           <img :src="imageSrc" alt="Processed Image" v-if="imageSrc" />
         </div>
       </div>
+      
+      <div class="saved-images-container" v-if="savedImages.sketches.length || savedImages.generated.length">
+        <h2>Immagini salvate</h2>
+        <div v-for="(sketch, index) in savedImages.sketches" :key="index" class="image-container">
+          <div class="sketch-image">
+            <img :src="'http://127.0.0.1:5000/saved_images/' + sketch" alt="Sketch">
+          </div>
+          <div v-if="index < savedImages.generated.length">
+            <img :src="'http://127.0.0.1:5000/saved_images/' + savedImages.generated[index]" alt="Generated Image">
+          </div>
+        </div>
+      </div>
+
     </div>
 </template>
 
@@ -33,8 +49,13 @@ export default defineComponent({
       color: 'black',
       path: null as paper.Path | null,
       canvasElement: null as HTMLCanvasElement | null,
-      imageSrc: '' , // Added the imageSrc data property
-      prompt: ''
+      imageSrc: '' ,
+      prompt: '',
+      lineWidth: 5,
+      savedImages: {
+        sketches: [],
+        generated: []
+      }
     };
   },
 
@@ -43,7 +64,7 @@ export default defineComponent({
       this.path = new paper.Path({
         segments: [event.point],
         strokeColor: this.color,
-        strokeWidth: 5,
+        strokeWidth: this.lineWidth,
       });
     },
 
@@ -58,29 +79,42 @@ export default defineComponent({
     },
 
     async sendImage() {
-  let canvasData = this.canvasElement?.toDataURL('image/png');
-  try {
-    let response = await fetch('http://127.0.0.1:5000/image', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ image: canvasData, prompt: this.prompt }) // Send prompt as well
-    });
+      let canvasData = this.canvasElement?.toDataURL('image/png');
+      try {
+        let response = await fetch('http://127.0.0.1:5000/image', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ image: canvasData, prompt: this.prompt })
+        });
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
 
-    const data = await response.json();
-    this.imageSrc = data.imageBase64; // Use the base64 encoded image data to set the imageSrc property
-    console.log(data.message);
+        const data = await response.json();
+        this.imageSrc = data.imageBase64;
+        console.log(data.message);
+        this.fetchSavedImages();
 
-  } catch (error) {
-    console.log('There was a problem with the fetch operation:', error);
-  }
-},
+      } catch (error) {
+        console.log('There was a problem with the fetch operation:', error);
+      }
+    },
 
+    async fetchSavedImages() {
+      try {
+        let response = await fetch('http://127.0.0.1:5000/saved-images');
+        if (response.ok) {
+          this.savedImages = await response.json();
+        } else {
+          console.error("Failed to fetch saved images");
+        }
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }
+    },
   },
 
   mounted() {
@@ -95,8 +129,10 @@ export default defineComponent({
 
     paper.view.on('mousedown', this.onMouseDown);
     paper.view.on('mousedrag', this.onMouseDrag);
+    this.fetchSavedImages();
   },
 });
+
 </script>
 
   
@@ -164,6 +200,25 @@ export default defineComponent({
 button{
     margin:0 0.5rem;
 }
+
+/* Aggiungi questo stile per le immagini salvate */
+.saved-images-container {
+  margin-top: 20px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+}
+
+.sketch-image, .generated-image {
+  width: 48%; /* Adatta la larghezza come preferisci */
+  border: 1px solid #007bff;
+  padding: 10px;
+}
+
   .image_from_backend{
     width:50%;
     border: 1px solid #007bff;
@@ -177,6 +232,10 @@ button{
     width:50%;
     height:100%;
 
+  }
+  img{
+    width:100%;
+    height:100%;
   }
 
   @media screen and (max-width: 768px) {

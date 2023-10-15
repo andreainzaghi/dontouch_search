@@ -1,10 +1,10 @@
 // Importa le funzionalità di Vue necessarie
 import { defineComponent, ref, computed, onMounted, watch } from 'vue';
-
 // Importa i tipi e i dati necessari
 import { DataItem, SortKeys } from '../../types';
 import { data as fetchedData, fetchData } from '../../dataFetch';
 import Documentazione from '../Documentazione.vue';  // Assicurati che il percorso sia corretto
+import store from '../../store/index';
 
 // Estensione delle dichiarazioni globali per supportare SpeechRecognition
 declare global {
@@ -32,6 +32,8 @@ export default defineComponent({
     // Query di ricerca inserita dall'utente
     const searchQuery = ref("");
 
+    // const searchQuery = computed(() => store.state.searchQuery);
+    // console.log(searchQuery)
     // Categoria selezionata per filtrare i risultati
     const selectedCategory = ref("");
 
@@ -282,9 +284,124 @@ export default defineComponent({
       showFilterDropdown,
       isRecording,
       showDropdown,
-       // per default, la search box è nascosta
-
-      
     };
   },
 });
+
+
+// import { defineComponent, computed, watch, ref, onMounted } from 'vue';
+// import { useStore } from 'vuex';
+// import { DataItem, SortKeys } from '../../types';
+// import Documentazione from '../Documentazione.vue';
+// // Import the isSortKey function
+
+// declare global {
+//   interface Window {
+//     SpeechRecognition: any;
+//     webkitSpeechRecognition: any;
+//   }
+// }
+
+
+
+// export default defineComponent({
+//   name: "SearchComponent",
+//   components: {
+//     Documentazione,
+//   },
+
+//   setup() {
+//     const store = useStore();
+//     console.log(store)
+    
+//     const searchQuery = ref("");
+//     const showDropdown = ref(false);
+
+//     watch(
+//       [
+//         searchQuery,
+//       ],
+//       () => {
+//         store.dispatch('fetchData');
+//       }
+//     );
+
+//     onMounted(() => {
+//       store.dispatch('fetchData');
+//     });
+
+//     const startSpeechRecognition = () => {
+//       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+//       if (!SpeechRecognition) {
+//         console.error("SpeechRecognition API not supported in this browser.");
+//         return;
+//       }
+//       const isSortKey =( key: string): key is SortKeys => {
+//         return ["views", "likes", "comments", "datePublished"].includes(key);
+//       }
+//       const recognition = new SpeechRecognition();
+//       recognition.lang = "it-IT";
+
+//       recognition.onresult = (event: any) => {
+//         store.commit('setSearchQuery', event.results[0][0].transcript);
+//       };
+
+//       recognition.onstart = () => {
+//         store.commit('setIsRecording', true);
+//       };
+
+//       recognition.onend = () => {
+//         store.commit('setIsRecording', false);
+//       };
+
+//       recognition.start();
+//     };
+
+//     const getImagePath = (imageName: any) => {
+//       return require(`@/assets/img/${imageName}`);
+//     };
+
+//     const closeDropdown = () => {
+//       showDropdown.value = false;
+//     };
+
+//     return {
+//       searchQuery: computed(() => store.state.searchQuery),
+//       sortedAndFilteredData: computed(() => store.getters.sortedAndFilteredData),
+//       selectedCategory: computed(() => store.state.selectedCategory),
+//       uniqueCategories: computed(() => [...new Set(store.state.fetchedData.map((item: DataItem) => item.category))]),
+//       sortOption: computed(() => store.state.sortOption),
+//       startSpeechRecognition,
+//       startDate: computed(() => store.state.startDate),
+//       endDate: computed(() => store.state.endDate),
+//       totalImages: computed(() => store.state.fetchedData.length),
+//       closeDropdown,
+//       getImagePath,
+      
+//       selectedStatus: computed(() => store.state.selectedStatus),
+//       uniqueStatuses: computed(() => [...new Set(store.state.fetchedData.map((item: DataItem) => item.status))]),
+//       selectedSpecies: computed(() => store.state.selectedSpecies),
+//       uniqueSpecies: computed(() => [...new Set(store.state.fetchedData.map((item: DataItem) => item.species))]),
+//       currentPage: computed(() => store.state.currentPage),
+//       totalPages: computed(() => store.getters.totalPages),
+//       paginatedData: computed(() => store.getters.paginatedData),
+//       goBack: () => {
+//         if (store.state.currentPage > 1) {
+//           store.commit('setCurrentPage', store.state.currentPage - 1);
+//         }
+//       },
+//       goForward: () => {
+//         if (store.state.currentPage < store.getters.totalPages) {
+//           store.commit('setCurrentPage', store.state.currentPage + 1);
+//         }
+//       },
+//       hideSearchBox: ref(true),
+//       isBackDisabled: computed(() => store.state.currentPage === 1),
+//       isForwardDisabled: computed(() => store.state.currentPage === store.getters.totalPages),
+//       searchMethod: computed(() => store.state.searchMethod),
+//       showFilterDropdown: computed(() => store.state.showFilterDropdown),
+//       isRecording: computed(() => store.state.isRecording),
+//       showDropdown,
+//     };
+//   },
+// });
